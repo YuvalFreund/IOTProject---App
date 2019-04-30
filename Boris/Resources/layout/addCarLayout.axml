@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+			
+	<AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/inputCarModel"
+		android:layout_width="fill_parent"
+		android:hint="Car Manufacturer"
+		android:layout_height="wrap_content" />
+	<AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/inputCarProductionYear"
+		android:layout_width="fill_parent"
+		android:hint="Production Year"
+		android:inputType="number"
+		android:layout_height="wrap_content" />
+	<AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/inputCarColor"
+		android:layout_width="fill_parent"
+		android:hint="Color"
+		android:layout_height="wrap_content" />		
+	<AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/inputCarLP"
+		android:layout_width="fill_parent"
+		android:hint="License Plate"
+		android:inputType="number"
+		android:layout_height="wrap_content" />	
+	<RadioGroup
+		    android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+		<RadioButton android:id="@+id/radioAutomatic"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Automatic" />
+		<RadioButton android:id="@+id/radioManual"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Manual" />
+</RadioGroup>
+
+        <Button
+			android:id="@+id/submitNewCar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="submit"/>
+
+    </LinearLayout>
+</ScrollView>

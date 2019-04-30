@@ -15,6 +15,9 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
+
+using Firebase.Iid;
+using Android.Util;
 namespace Boris.Resources
 {
     [Activity(Label = "loginActivity", MainLauncher = true)]
@@ -26,14 +29,17 @@ namespace Boris.Resources
             SetContentView(Resource.Layout.loginLayout);
             Button logi = FindViewById<Button>(Resource.Id.btn_login1);
             logi.Click += loginSend;
+            Button signi = FindViewById<Button>(Resource.Id.link_signup);
+            signi.Click += openSignIn;
         }
         void loginSend(object sender, EventArgs eventArgs)
         {
             int status=0;
+            var refreshedToken = FirebaseInstanceId.Instance.Token;
             login_result result = new login_result();
             String email = FindViewById<EditText>(Resource.Id.input_email).Text;
             String password = FindViewById<EditText>(Resource.Id.input_password).Text;
-            String address = "https://carshareserver.azurewebsites.net/api/Login?email=" + email + "&password=" + password;
+            String address = "https://carshareserver.azurewebsites.net/api/Login?email=" + email + "&password=" +password + "&token=" + refreshedToken;
             result.get_from_cloud(address);
             status = result.status;
             if (status != 1)
@@ -43,7 +49,6 @@ namespace Boris.Resources
                 ToastLength duration = ToastLength.Long;
                 var toast = Toast.MakeText(context, text, duration);
                 toast.Show();
-                Intent login = new Intent(this, typeof(loginActivity));
             }
             else
             {
@@ -52,6 +57,12 @@ namespace Boris.Resources
                 StartActivity(main);
                 Finish();
             }
+        }
+
+        void openSignIn(object sender, EventArgs eventArgs)
+        {
+            Intent signIntry = new Intent(this, typeof(signinActivity));
+            StartActivity(signIntry);
         }
         string Get(string uri){ 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);

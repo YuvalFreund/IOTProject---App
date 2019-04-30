@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "170134404150",
+    "firebase_url": "https://carsharing-26628.firebaseio.com",
+    "project_id": "carsharing-26628",
+    "storage_bucket": "carsharing-26628.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170134404150:android:09303a2d418d6b66",
+        "android_client_info": {
+          "package_name": "Boris.Boris"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170134404150-0qdcigeaofc8468qd2qpsden3rpd4ac3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO7xZZ7gwxKbRipagVIiT_6g6vLDP-2pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170134404150-0qdcigeaofc8468qd2qpsden3rpd4ac3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

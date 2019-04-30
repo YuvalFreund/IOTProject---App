@@ -3,4 +3,68 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
+  <string-array name="carModels">
+    <item>Acura</item>
+    <item>Alfa Romeo</item>
+    <item>Audi</item>
+    <item>Aston Martin</item>
+    <item>BMW</item>
+    <item>Bentley</item>
+    <item>Buick</item>
+    <item>Cadillac</item>
+    <item>Chevrolet</item>
+    <item>Dodge</item>
+    <item>Fiat</item>
+    <item>Ford</item>
+    <item>GMC</item>
+    <item>Genesis</item>
+    <item>Honda</item>
+    <item>Hyundai</item>
+    <item>Infinti</item>
+    <item>Jaguar</item>
+    <item>Jeep</item>
+    <item>Kia</item>
+    <item>Land Rover</item>
+    <item>Lexus</item>
+    <item>Lincoln</item>
+    <item>Lotus</item>
+    <item>Maserati</item>
+    <item>Mazda</item>
+    <item>Merceds-Benz</item>
+    <item>Mercury</item>
+    <item>Mini</item>
+    <item>Mitsubishi</item>
+    <item>Nissan</item>
+    <item>Polestar</item>
+    <item>Pontiac</item>
+    <item>Porsche</item>
+    <item>Ram</item>
+    <item>Rolls-Royce</item>
+    <item>Saab</item>
+    <item>Saturn</item>
+    <item>Skoda</item>
+    <item>Smart</item>
+    <item>Subaru</item>
+    <item>Suzuki</item>
+    <item>Susita</item>
+    <item>Tesla</item>
+    <item>Toyota</item>
+    <item>Volkswagen</item>
+    <item>Volvo</item>
+  </string-array>
+  <string-array name="carColors">
+    <item>White</item>
+    <item>Red</item>
+    <item>Orange</item>
+    <item>Yellow</item>
+    <item>Green</item>
+    <item>Blue</item>
+    <item>Purple</item>
+    <item>Pink</item>
+    <item>Brown</item>
+    <item>Black</item>
+    <item>Gray</item>
+    <item>Gold</item>
+    <item>Silver</item>
+  </string-array>
 </resources>
