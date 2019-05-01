@@ -66,6 +66,7 @@ namespace Boris
 
 
             String login_hash = Preferences.Get("login_hash", "1");
+            String user_id = Preferences.Get("user_id", "0");
             if (login_hash == "1")
             {
                 Intent login_try = new Intent(this, typeof(loginActivity));
@@ -75,7 +76,7 @@ namespace Boris
             else
             {
                 user user = new user();
-                user.get_from_cloud(2, login_hash);
+                user.get_from_cloud(user_id, login_hash);
                 GetImageBitmapFromUrl("https://carshareserver.azurewebsites.net/api/getUserImage?user_id=" + user.id);
                 void DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
                 {

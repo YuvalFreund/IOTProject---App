@@ -14,7 +14,7 @@ using Xamarin.Essentials;
 
 public class user
 {
-    public int id;
+    public string id;
     public string first_name;
     public string last_name;
     public string email;
@@ -22,7 +22,7 @@ public class user
     public string profile_image;
     public user() { }
     private static HttpClient client = new HttpClient();
-    public void get_from_cloud(int id, string login_hash)
+    public void get_from_cloud(string id, string login_hash)
     {
         var responseString = client.GetStringAsync("https://carshareserver.azurewebsites.net/api/getUserDetails?user_id=" + id.ToString() + "&login_hash=" + login_hash);
         user response = JsonConvert.DeserializeObject<user>(responseString.Result);
@@ -36,7 +36,7 @@ public class user
         this.profile_image = response.profile_image;
 
     }
-    public user(int id, string first_name, string last_name, string email, string licence_number, string profile_image)
+    public user(string id, string first_name, string last_name, string email, string licence_number, string profile_image)
     {
         this.id = id;
         this.first_name = first_name;

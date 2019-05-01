@@ -17,11 +17,11 @@ namespace Boris
     class login_result
     {
         public int status;
-        public int id;
+        public string id;
         public string login_hash;
         public login_result () { }
         private static HttpClient client = new HttpClient();
-        public login_result(int status, int id, string login_hash)
+        public login_result(int status, string id, string login_hash)
         {
             this.status = status;
             this.id = id;

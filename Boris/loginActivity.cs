@@ -53,6 +53,7 @@ namespace Boris.Resources
             else
             {
                 Preferences.Set("login_hash", result.login_hash);
+                Preferences.Set("user_id", result.id);
                 Intent main = new Intent(this, typeof(MainActivity));
                 StartActivity(main);
                 Finish();
