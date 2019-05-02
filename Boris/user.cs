@@ -20,6 +20,7 @@ public class user
     public string email;
     public string licence_number;
     public string profile_image;
+    public string img;
     public user() { }
     private static HttpClient client = new HttpClient();
     public void get_from_cloud(string id, string login_hash)
@@ -34,6 +35,7 @@ public class user
         this.email = response.email;
         this.licence_number = response.licence_number;
         this.profile_image = response.profile_image;
+        this.img = response.img;
 
     }
     public user(string id, string first_name, string last_name, string email, string licence_number, string profile_image)
