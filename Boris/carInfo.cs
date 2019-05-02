@@ -94,10 +94,14 @@ namespace Boris
 
                         //Calculate image size
                         double ratio = (double)img1.Height / (double)img1.Width;
+                        FindViewById<RelativeLayout>(Resource.Id.loadingPanel).Visibility = ViewStates.Gone;
                         imagen.LayoutParameters.Height = (int)((double)Resources.DisplayMetrics.WidthPixels * ratio);
                     }
                 }
+            } else {
+                FindViewById<RelativeLayout>(Resource.Id.loadingPanel).Visibility = ViewStates.Gone;
             }
+
         }
     }
 }

@@ -1037,11 +1037,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Guy Itach\\Source\\Repos\\IOTProject---App\\Boris\\Boris.csproj",
+      "projectUniqueName": "C:\\Users\\Guy Itach\\source\\repos\\IOTProject---App\\Boris\\Boris.csproj",
       "projectName": "Boris",
-      "projectPath": "C:\\Users\\Guy Itach\\Source\\Repos\\IOTProject---App\\Boris\\Boris.csproj",
+      "projectPath": "C:\\Users\\Guy Itach\\source\\repos\\IOTProject---App\\Boris\\Boris.csproj",
       "packagesPath": "C:\\Users\\Guy Itach\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Guy Itach\\Source\\Repos\\IOTProject---App\\Boris\\obj\\",
+      "outputPath": "C:\\Users\\Guy Itach\\source\\repos\\IOTProject---App\\Boris\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
