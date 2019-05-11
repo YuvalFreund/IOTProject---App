@@ -50,7 +50,7 @@ namespace Boris
             IMG = Intent.GetStringExtra("IMG");
 
             CheckBt();
-            bluetoothDeviceReceiver = new BluetoothDeviceReceiver();// MAC_ADDRESS,this);
+            bluetoothDeviceReceiver = new BluetoothDeviceReceiver(MAC_ADDRESS,this);// MAC_ADDRESS,this);
             RegisterReceiver(bluetoothDeviceReceiver, new IntentFilter(BluetoothDevice.ActionFound));
 
             openCarButton = FindViewById<Button>(Resource.Id.openCarButton);
@@ -246,7 +246,7 @@ namespace Boris
     }
     class BluetoothDeviceReceiver : BroadcastReceiver
     {
-       /* private string address;
+        private string address;
         openCar activity;
 
         public BluetoothDeviceReceiver(string address, Activity activity) : base()
@@ -255,21 +255,21 @@ namespace Boris
 
             this.activity = (openCar)activity;
             this.address = address;
-        }*/
+        }
         public override void OnReceive(Context context, Intent intent)
         {
             string action = intent.Action;
-            Console.WriteLine("Something happend was found");
+            Console.WriteLine("Something happend");
             
             if (action == BluetoothDevice.ActionFound)
             {
                 BluetoothDevice found = (BluetoothDevice)intent.GetParcelableExtra(BluetoothDevice.ExtraDevice);
                 Console.WriteLine("Some device was found");
-/*
+
                 if (found.Address == this.address)
                 {
                     activity.Connect();
-                }*/
+                }
             }
         }
     }

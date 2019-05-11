@@ -6,6 +6,8 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Gms.Common;
+using Android.Gms.Location;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.OS;

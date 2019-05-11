@@ -8,17 +8,17 @@
         android:layout_height="wrap_content"
         android:text="Total time :"
         android:id="@+id/totalTimeView"
-		android:textSize="35dp"/>
+		android:textSize="25dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total cost :"
         android:id="@+id/totalCostView"
-		android:textSize="35dp"/>
+		android:textSize="25dp"/>
 	<fragment xmlns:android="http://schemas.android.com/apk/res/android"
           android:id="@+id/liveMapContainer"
-          android:layout_width="300"
-          android:layout_height="300"
+          android:layout_width="300dp"
+          android:layout_height="300dp"
 		  android:layout_gravity="center"
 		  android:layout_marginTop="50dp"
           class="com.google.android.gms.maps.MapFragment" />

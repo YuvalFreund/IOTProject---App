@@ -413,7 +413,6 @@ C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\bin\Debug\Xamarin.Ess
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\MonoAndroid,Version=v8.1.AssemblyAttributes.cs
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\build.props
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\adb.props
-C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\Boris.csprojAssemblyReference.cache
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\XbdMerge\Xamarin.GooglePlayServices.Basement.dll.stamp
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\XbdMerge\Xamarin.GooglePlayServices.Tasks.dll.stamp
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\XbdMerge\Xamarin.GooglePlayServices.Base.dll.stamp
@@ -495,6 +494,7 @@ C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\res\draw
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\res\drawable\rounded_button_off.xml
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\res\layout\opencarlayout.xml
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\res\layout\list_item.xml
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\res\layout\livelayout.xml
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\R.cs.flag
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\R.txt
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\uploadflags.txt
@@ -572,7 +572,6 @@ C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Boris.pdb
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Java.Interop.dll
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Mono.Android.dll
-C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Mono.Android.pdb
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Mono.Security.dll
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Mono.Security.pdb
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\mscorlib.dll
@@ -642,3 +641,11 @@ C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\stamp\_C
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\stamp\_CopyMdbFiles.stamp
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\stamp\_CopyPdbFiles.stamp
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\Boris.csprojAssemblyReference.cache
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\XbdMerge\Xamarin.GooglePlayServices.Location.dll.stamp
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\XbdMerge\effb2371.proguard.stamp
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\linksrc\Xamarin.GooglePlayServices.Location.dll
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Xamarin.GooglePlayServices.Location.dll
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\machine.config
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\stamp\_CompileToDalvik.stamp
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\stamp\_GeneratePackageManagerJava.stamp

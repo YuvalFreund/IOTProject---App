@@ -160,9 +160,9 @@ namespace Boris
             int id = item.ItemId;
             if (id == Resource.Id.nav_my_cars)
             {
-                  showFragment(mMyCarsFragment);
-               /* Intent login_try = new Intent(this, typeof(getCar));
-                StartActivity(login_try);*/
+                 // showFragment(mMyCarsFragment);
+               Intent login_try = new Intent(this, typeof(liveActivity));
+                StartActivity(login_try);
             }
             if (id == Resource.Id.nav_home)
             {

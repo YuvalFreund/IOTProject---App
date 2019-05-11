@@ -31,6 +31,7 @@ C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Xamarin.Firebase.Messaging.dll
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Xamarin.GooglePlayServices.Base.dll
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Xamarin.GooglePlayServices.Basement.dll
+C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Xamarin.GooglePlayServices.Location.dll
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Xamarin.GooglePlayServices.Maps.dll
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\Xamarin.GooglePlayServices.Tasks.dll
 C:\Users\yuvalfreund93\source\repos\IOTProject---App\Boris\obj\Debug\81\android\assets\System.Core.dll

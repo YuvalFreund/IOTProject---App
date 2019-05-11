@@ -392,6 +392,23 @@
           "build/MonoAndroid80/Xamarin.GooglePlayServices.Basement.targets": {}
         }
       },
+      "Xamarin.GooglePlayServices.Location/60.1142.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.GooglePlayServices.Base": "[60.1142.1]",
+          "Xamarin.GooglePlayServices.Basement": "[60.1142.1]",
+          "Xamarin.GooglePlayServices.Tasks": "[60.1142.1]"
+        },
+        "compile": {
+          "lib/MonoAndroid80/Xamarin.GooglePlayServices.Location.dll": {}
+        },
+        "runtime": {
+          "lib/MonoAndroid80/Xamarin.GooglePlayServices.Location.dll": {}
+        },
+        "build": {
+          "build/MonoAndroid80/Xamarin.GooglePlayServices.Location.targets": {}
+        }
+      },
       "Xamarin.GooglePlayServices.Maps/60.1142.1": {
         "type": "package",
         "dependencies": {
@@ -989,6 +1006,19 @@
         "xamarin.googleplayservices.basement.nuspec"
       ]
     },
+    "Xamarin.GooglePlayServices.Location/60.1142.1": {
+      "sha512": "ZYufNlkYYcbgz/uANi9ed1/J+UJ/WysONwip0Oi7X8Hty1oXGRHWUfERZxxw8MXb8EjQgPhCrsiqvBHs+YX/7g==",
+      "type": "package",
+      "path": "xamarin.googleplayservices.location/60.1142.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/MonoAndroid80/Xamarin.GooglePlayServices.Location.targets",
+        "lib/MonoAndroid80/Xamarin.GooglePlayServices.Location.dll",
+        "xamarin.googleplayservices.location.60.1142.1.nupkg.sha512",
+        "xamarin.googleplayservices.location.nuspec"
+      ]
+    },
     "Xamarin.GooglePlayServices.Maps/60.1142.1": {
       "sha512": "vfoDYOOtox8RDjEAV2AYmoTQpKj3dhy5Zhn8EpYB2uelTTkTAfp+5CWZ57ZQHs4PdpSyjFmRS+nVEAP4Fn2qkg==",
       "type": "package",
@@ -1026,6 +1056,7 @@
       "Xamarin.Firebase.Iid >= 60.1142.1",
       "Xamarin.Firebase.Messaging >= 60.1142.1",
       "Xamarin.GooglePlayServices.Base >= 60.1142.1",
+      "Xamarin.GooglePlayServices.Location >= 60.1142.1",
       "Xamarin.GooglePlayServices.Maps >= 60.1142.1",
       "Xamarin.GooglePlayServices.Tasks >= 60.1142.1"
     ]
@@ -1097,6 +1128,10 @@
             "version": "[60.1142.1, )"
           },
           "Xamarin.GooglePlayServices.Base": {
+            "target": "Package",
+            "version": "[60.1142.1, )"
+          },
+          "Xamarin.GooglePlayServices.Location": {
             "target": "Package",
             "version": "[60.1142.1, )"
           },
