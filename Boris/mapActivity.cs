@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Android.Util;
 
 using Android.App;
 using Android.Content;
@@ -33,6 +34,11 @@ namespace Boris
         public string model;
         public bool mode;
         NZ_result points = new NZ_result();
+        public string TAG
+        {
+            get;
+            private set;
+        }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -40,6 +46,7 @@ namespace Boris
             FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapContainer).GetMapAsync(this);
 
         }
+
 
         public void OnMapReady(GoogleMap map)
         {

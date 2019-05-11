@@ -2,6 +2,8 @@
 using Android.App;
 using Firebase.Iid;
 using Android.Util;
+using Android.Content;
+using Android.Runtime;
 
 namespace FCMClient
 {
