@@ -11,17 +11,24 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Boris;
 
 namespace Boris
 {
     [Activity(Label = "carInfo")]
     public class carInfo : Activity
     {
+        Button requestCarButton;
+        string carId;
+        string imgAdress;
+        private ListView nListView;
+        //private List<list_item> nItems;
+
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            string carId = Intent.GetStringExtra("ID");
+            carId = Intent.GetStringExtra("ID");
             SetContentView(Resource.Layout.carInfoLayout);
             GridLayout carModeGridLayout = FindViewById<GridLayout>(Resource.Id.gridLayout1);
 
@@ -33,6 +40,8 @@ namespace Boris
             TextView carUserView = FindViewById<TextView>(Resource.Id.carInfoUser);
             TextView carUserEmailView = FindViewById<TextView>(Resource.Id.carInfoUserEmail);
 
+            requestCarButton = FindViewById<Button>(Resource.Id.requestCarButton);
+            requestCarButton.Click += requestCar;
 
 
             carInfo_result info = new carInfo_result();
@@ -80,7 +89,7 @@ namespace Boris
             }
             if (totalInfo.img != "")
             {
-                string imgAdress = totalInfo.img;
+                imgAdress = totalInfo.img;
                 GetImageBitmapFromUrl(imgAdress, loadCarImage);
 
                 void loadCarImage(object sender, DownloadDataCompletedEventArgs e)
@@ -98,10 +107,23 @@ namespace Boris
                         imagen.LayoutParameters.Height = (int)((double)Resources.DisplayMetrics.WidthPixels * ratio);
                     }
                 }
-            } else {
+            }
+            else
+            {
                 FindViewById<RelativeLayout>(Resource.Id.loadingPanel).Visibility = ViewStates.Gone;
             }
 
+        }
+        void requestCar(object sender, EventArgs eventArgs)
+        {
+            
+            Intent openCar_try = new Intent(this, typeof(openCar));
+            openCar_try.PutExtra("ID", carId);
+            openCar_try.PutExtra("IMG", imgAdress);
+            StartActivity(openCar_try);
+            Finish();
+
+          
         }
     }
 }

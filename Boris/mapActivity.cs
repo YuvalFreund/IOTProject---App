@@ -90,7 +90,6 @@ namespace Boris
             Intent login_try = new Intent(this, typeof(carInfo));
             login_try.PutExtra("ID",carIdString);
             StartActivity(login_try);
-            Finish();
         }
     }
 }

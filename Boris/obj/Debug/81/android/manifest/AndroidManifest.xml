@@ -3,6 +3,8 @@
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
   <uses-permission android:name="Boris.Boris.permission.MAPS_RECEIVE" />
   <permission android:name="Boris.Boris.permission.MAPS_RECEIVE" android:protectionLevel="signature" />
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
   <!-- These are optional, but recommended. They will allow Maps to use the My Location provider. -->
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -41,6 +43,7 @@
       </intent-filter>
     </activity>
     <activity android:label="mapActivity" android:name="md5fb236bd1760da7c8d4ab2de9bb03abcb.mapActivity" />
+    <activity android:label="openCar" android:name="md5fb236bd1760da7c8d4ab2de9bb03abcb.openCar" />
     <activity android:label="review" android:name="md5fb236bd1760da7c8d4ab2de9bb03abcb.review" />
     <activity android:label="signinActivity" android:name="md5fb236bd1760da7c8d4ab2de9bb03abcb.signinActivity" />
     <activity android:label="loginActivity" android:name="md5804fad921a885bd2112d643083ce294b.loginActivity">

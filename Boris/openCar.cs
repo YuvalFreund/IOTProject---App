@@ -18,25 +18,25 @@ using System.IO;
 using System.Threading.Tasks;
 
 
-
 namespace Boris
 {
     [Activity(Label = "openCar")]
     public class openCar : Activity
     {
         private System.Timers.Timer timer;
-
-       
+        
         string carId;
         string IMG;
-        string MAC_ADDRESS= "98:D3:71:F9:7A:48"; // arduino address
-       // string GUY_ADDRESS= "AC:5F:3E:B5:85:57"; // guy's address
-       // string JBL_ADDRESS= "78:44:05:e0:df:87"; // arduino address
+        string MAC_ADDRESS = "98:D3:71:F9:7A:48"; // arduino address
+                                                  // string GUY_ADDRESS= "AC:5F:3E:B5:85:57"; // guy's address
+                                                  // string JBL_ADDRESS= "78:44:05:e0:df:87"; // arduino address
 
         Button openCarButton;
+        string valor;
 
+        private BluetoothDeviceReceiver bluetoothDeviceReceiver;
         private BluetoothAdapter mBluetoothAdapter = null;
-        private BluetoothSocket btSocket = null;
+        private BluetoothSocket btSocket;
         private Stream outStream = null;
         private Stream inStream = null;
         private static UUID MY_UUID = UUID.FromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -46,9 +46,12 @@ namespace Boris
         {
             SetContentView(Resource.Layout.openCarLayout);
             base.OnCreate(savedInstanceState);
-
             carId = Intent.GetStringExtra("ID");
             IMG = Intent.GetStringExtra("IMG");
+
+            CheckBt();
+            bluetoothDeviceReceiver = new BluetoothDeviceReceiver();// MAC_ADDRESS,this);
+            RegisterReceiver(bluetoothDeviceReceiver, new IntentFilter(BluetoothDevice.ActionFound));
 
             openCarButton = FindViewById<Button>(Resource.Id.openCarButton);
             var gradientDrawable = openCarButton.Background.Current as GradientDrawable;
@@ -93,29 +96,20 @@ namespace Boris
                 FindViewById<RelativeLayout>(Resource.Id.openCarloadingPanel).Visibility = ViewStates.Gone;
             }
 
-            timer = new System.Timers.Timer();
-            timer.Interval = 5000;
+            /*timer = new System.Timers.Timer();
+            timer.Interval = 15000;
             timer.Elapsed += OnTimedEvent;
-            timer.Enabled = true;
-            CheckBt();
+            timer.Enabled = true;*/
+            bool started = mBluetoothAdapter.StartDiscovery();
+            System.Console.WriteLine("is scan startd: " + started);
 
         }
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            tryToConnect();
+            Connect();
         }
-        
-        void tryToConnect()
-        {
-                Connect();
-              /*  try{
-                    btSocket.Close();
-                }
-                catch (System.Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }  */  
-        }
+
+
         public void Connect()
         {
             BluetoothDevice device = mBluetoothAdapter.GetRemoteDevice(MAC_ADDRESS);
@@ -125,27 +119,38 @@ namespace Boris
             {
                 btSocket = device.CreateRfcommSocketToServiceRecord(MY_UUID);
                 btSocket.Connect();
-                System.Console.WriteLine("Connection success");
-                openCarButton.Enabled = true;
-                var gradientDrawable = openCarButton.Background.Current as GradientDrawable;
-                gradientDrawable.SetColor(Color.ParseColor("#009688"));
-                timer.Close();
+
+                bool ivs = false;
+                ivs = btSocket.IsConnected;
+                System.Console.WriteLine("ivs is: " + ivs);
+                if (ivs) {
+                    System.Console.WriteLine("Connection success1");
+                    var gradientDrawable = openCarButton.Background.Current as GradientDrawable;
+                    gradientDrawable.SetColor(Color.ParseColor("#009688"));
+                    System.Console.WriteLine("Connection success2");
+                    openCarButton.Enabled = true;
+                    System.Console.WriteLine("Connection success3");
+                    openCarButton.Text = "unlock car";
+                    System.Console.WriteLine("Connection success4");
+                    FindViewById<RelativeLayout>(Resource.Id.openCarWaitPanel).Visibility = ViewStates.Gone;
+                    // timer.Stop();
+                }
             }
             catch (System.Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("exepction: " + e.Message);
                 Console.WriteLine("didn't manage to connect");
-
-                /*try
+                try
                 {
-                    btSocket.Close();
+                     btSocket.Close();
                 }
                 catch (System.Exception)
                 {
-                    System.Console.WriteLine("Imposible Conectar");
+                    System.Console.WriteLine("couldn't close socket");
                 }
-                System.Console.WriteLine("Socket Creado");*/
+                System.Console.WriteLine("Socket close");
             }
+
         }
         public void beginListenForData()
         {
@@ -156,6 +161,7 @@ namespace Boris
             }
             catch (System.IO.IOException ex)
             {
+                Console.WriteLine("message not recieved yet");
                 Console.WriteLine(ex.Message);
             }
             //Creamos un hilo que estara corriendo en background el cual verificara si hay algun dato
@@ -169,19 +175,22 @@ namespace Boris
                 {
                     try
                     {
+                        System.Console.WriteLine("Begin listen for data");
+
                         bytes = inStream.Read(buffer, 0, buffer.Length);
                         if (bytes > 0)
                         {
+                            System.Console.WriteLine("Got something");
                             RunOnUiThread(() => {
-                                string valor = System.Text.Encoding.ASCII.GetString(buffer);
-                                //Result.Text = Result.Text + "\n" + valor;
+                                valor = System.Text.Encoding.ASCII.GetString(buffer);
+                                System.Console.WriteLine(valor);
+
                             });
                         }
                     }
                     catch (Java.IO.IOException)
                     {
                         RunOnUiThread(() => {
-                           // Result.Text = string.Empty;
                         });
                         break;
                     }
@@ -212,7 +221,11 @@ namespace Boris
         }
         void tryOpenCar(object sender, EventArgs eventArgs)
         {
+            Console.WriteLine("button clicked");
             beginListenForData();
+            dataToSend = new Java.Lang.String("e");
+            writeData(dataToSend);
+
 
         }
         private void CheckBt()
@@ -231,8 +244,38 @@ namespace Boris
             }
         }
     }
-   
+    class BluetoothDeviceReceiver : BroadcastReceiver
+    {
+       /* private string address;
+        openCar activity;
+
+        public BluetoothDeviceReceiver(string address, Activity activity) : base()
+        {
+            Console.WriteLine("Receiver created");
+
+            this.activity = (openCar)activity;
+            this.address = address;
+        }*/
+        public override void OnReceive(Context context, Intent intent)
+        {
+            string action = intent.Action;
+            Console.WriteLine("Something happend was found");
+            
+            if (action == BluetoothDevice.ActionFound)
+            {
+                BluetoothDevice found = (BluetoothDevice)intent.GetParcelableExtra(BluetoothDevice.ExtraDevice);
+                Console.WriteLine("Some device was found");
+/*
+                if (found.Address == this.address)
+                {
+                    activity.Connect();
+                }*/
+            }
+        }
+    }
 }
+
+        
     
 
     

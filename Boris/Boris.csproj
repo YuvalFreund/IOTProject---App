@@ -65,6 +65,7 @@
     <Compile Include="carInfo_result.cs" />
     <Compile Include="getCar.cs" />
     <Compile Include="History.cs" />
+    <Compile Include="liveActivity.cs" />
     <Compile Include="login_result.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="loginActivity.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="MyFirebaseIIDService.cs" />
     <Compile Include="MyFirebaseMessagingService.cs" />
     <Compile Include="NZ_result.cs" />
+    <Compile Include="openCar.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="review.cs" />
@@ -275,9 +277,19 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\rounded_button_off.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="Resources\drawable\shadow_rect.xml">
       <SubType>Designer</SubType>
     </Content>
+    <AndroidResource Include="Resources\layout\openCarLayout.axml" />
+    <AndroidResource Include="Resources\layout\list_item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\liveLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
