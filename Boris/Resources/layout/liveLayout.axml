@@ -17,8 +17,8 @@
 		android:textSize="35dp"/>
 	<fragment xmlns:android="http://schemas.android.com/apk/res/android"
           android:id="@+id/liveMapContainer"
-          android:layout_width="300"
-          android:layout_height="300"
+          android:layout_width="300dp"
+          android:layout_height="300dp"
 		  android:layout_gravity="center"
 		  android:layout_marginTop="50dp"
           class="com.google.android.gms.maps.MapFragment" />

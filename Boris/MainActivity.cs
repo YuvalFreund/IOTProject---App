@@ -48,9 +48,38 @@ namespace Boris
             IsPlayServicesAvailable();
             CreateNotificationChannel();
 
+
             const string TAG = "MyFirebaseIIDService";
             var refreshedToken = FirebaseInstanceId.Instance.Token;
             Log.Debug(TAG, "Refreshed token: " + refreshedToken);
+
+
+            if (Intent.Extras != null)
+            {
+                foreach (var key in Intent.Extras.KeySet())
+                {
+                    if (key == "action")
+                    {
+                        var value = Intent.Extras.GetString(key);
+                        switch (Convert.ToInt32(value))
+                        {
+                            case 1:
+                                Log.Debug(TAG, "Notification: Permit Request");
+                                break;
+                            case 2:
+                                Log.Debug(TAG, "Notification: Permit Status Change");
+                                break;
+                            case 3:
+                                Log.Debug(TAG, "Notification: Car Action");
+                                break;
+                            default:
+                                Log.Debug(TAG, "Notification: Unknown");
+                                break;
+                        }
+                    }
+                }
+            }
+
 
             var trans = SupportFragmentManager.BeginTransaction();
             mMainFragment = new mainFragment();
@@ -116,7 +145,7 @@ namespace Boris
                 }
             }
         }
-        
+
 
         public override void OnBackPressed()
         {

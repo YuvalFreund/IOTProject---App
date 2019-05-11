@@ -36,6 +36,7 @@
     <activity android:label="addCar" android:name="md5fb236bd1760da7c8d4ab2de9bb03abcb.addCar" />
     <activity android:label="carInfo" android:name="md5fb236bd1760da7c8d4ab2de9bb03abcb.carInfo" />
     <activity android:label="getCar" android:name="md5fb236bd1760da7c8d4ab2de9bb03abcb.getCar" />
+    <activity android:label="liveActivity" android:name="md5fb236bd1760da7c8d4ab2de9bb03abcb.liveActivitypublic" />
     <activity android:label="@string/app_name" android:theme="@style/AppTheme.NoActionBar" android:name="md5fb236bd1760da7c8d4ab2de9bb03abcb.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
