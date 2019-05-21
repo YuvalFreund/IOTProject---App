@@ -55,7 +55,7 @@ namespace Boris
             Log.Debug(TAG, "Refreshed token: " + refreshedToken);
 
             string carID = "";
-            
+            string status = "0";
             //push handling
 
             if (Intent.Extras != null)
@@ -66,10 +66,13 @@ namespace Boris
                     {
                         carID = Intent.Extras.GetString(key);
                     }
+                    if (key == "status")
+                    {
+                        status = Intent.Extras.GetString(key);
+                    }
                     if (key == "action")
                     {
                         var value = Intent.Extras.GetString(key);
-                        int status=0;// 0 mean declined, 1 means approved
                         switch (Convert.ToInt32(value))
                         {
                             case 1:
@@ -183,12 +186,12 @@ namespace Boris
 
 
 
-        private void HandlePermitStatusChanged(string carId, int status)
+        private void HandlePermitStatusChanged(string carId, string status)
         {
-            if (status == 1){
-                TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
-                TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
-                Button details = FindViewById<Button>(Resource.Id.detailsButton);
+            TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
+            TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
+            Button details = FindViewById<Button>(Resource.Id.detailsButton);
+            if (status == "1"){
                 pending.Visibility = ViewStates.Invisible;
                 details.Text = "get the car!";
                 details.Visibility = ViewStates.Visible;
@@ -199,7 +202,14 @@ namespace Boris
                 StartActivity(open_try);
             }
             else{
-                //declined
+                pending.Visibility = ViewStates.Visible;
+                details.Visibility = ViewStates.Invisible;
+                waitingApproval.Visibility = ViewStates.Invisible;
+                Context context = Application.Context;
+                string text = "Your request was declined.";
+                ToastLength duration = ToastLength.Long;
+                var toast = Toast.MakeText(context, text, duration);
+                toast.Show();
             }
         }
 
