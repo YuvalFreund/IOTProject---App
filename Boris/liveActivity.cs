@@ -35,7 +35,7 @@ namespace Boris
         int totalTimeVal;
         double totalCostVal;
         FusedLocationProviderClient fusedLocationProviderClient;
-
+        Button finishDrive;
         public string TAG
         {
             get;
@@ -45,21 +45,30 @@ namespace Boris
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.liveLayout);
+            finishDrive = FindViewById<Button>(Resource.Id.finishDriveButton);
+            finishDrive.Click += finishAction;
             FragmentManager.FindFragmentById<MapFragment>(Resource.Id.liveMapContainer).GetMapAsync(this);
             InitializeLocationManager();
-            Location location = locationManager.GetLastKnownLocation(locationProvider);
-           Log.Debug(TAG, "new location: " + location.Latitude.ToString() + "," + location.Longitude.ToString());
+           // Location location = locationManager.GetLastKnownLocation(locationProvider);
+         //   Log.Debug(TAG, "new location: " + location.Latitude.ToString() + "," + location.Longitude.ToString());
             //sedLocationProviderClient = LocationServices.GetFusedLocationProviderClient(this);
-            timer = new System.Timers.Timer();
+            timer =  new Timer();
             timer.Interval = 1000;
             timer.Elapsed += OnTimedEvent;
             timer.Enabled = true;
             totalTime = FindViewById<TextView>(Resource.Id.totalTimeView);
             totalCost = FindViewById<TextView>(Resource.Id.totalCostView);
             totalTimeVal = 0;
-            totalCostVal = 0; 
+            totalCostVal = 0;
+            finishDrive = FindViewById<Button>(Resource.Id.finishDriveButton);
+         }
 
-
+        private void finishAction(object sender, EventArgs e)
+        {
+            Intent review_try= new Intent(this, typeof(review));
+           // review_try.PutExtra("ID", "7029774");
+            StartActivity(review_try);
+            Finish();
         }
 
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
@@ -67,12 +76,14 @@ namespace Boris
             totalTimeVal++;
             totalCostVal += 0.15;
             if (totalTimeVal < 600){
-                totalTime.Text ="Total time: " + "0" + (totalTimeVal / 60).ToString() + ":" + (totalTimeVal % 60).ToString();
-            }
+                string minuets = "0" + totalTimeVal / 60 + ":";
+                string seconds = "0" + totalTimeVal % 60;
+                totalTime.Text = "Total time:" + minuets+seconds;
+           }
             else{
-                totalTime.Text = (totalTimeVal / 60 ).ToString() + ":" + (totalTimeVal % 60).ToString();
+                totalTime.Text = totalTimeVal / 60  + ":" + totalTimeVal % 60;
             }
-            totalCost.Text = "Total cost: " + totalCostVal.ToString();
+            totalCost.Text = "Total cost: " + totalCostVal;
         }
 
         public void OnMapReady(GoogleMap googleMap)

@@ -64,6 +64,7 @@
     <Compile Include="carInfo.cs" />
     <Compile Include="carInfo_result.cs" />
     <Compile Include="getCar.cs" />
+    <Compile Include="handleReqActivity.cs" />
     <Compile Include="History.cs" />
     <Compile Include="liveActivity.cs" />
     <Compile Include="login_result.cs" />
@@ -80,7 +81,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="review.cs" />
     <Compile Include="signinActivity.cs" />
-    <Compile Include="timer.cs" />
     <Compile Include="user.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +291,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\liveLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\handleReqLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

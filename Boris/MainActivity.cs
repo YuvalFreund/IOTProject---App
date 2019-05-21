@@ -48,25 +48,36 @@ namespace Boris
             IsPlayServicesAvailable();
             CreateNotificationChannel();
 
+            Preferences.Set("isPending", false);
 
             const string TAG = "MyFirebaseIIDService";
             var refreshedToken = FirebaseInstanceId.Instance.Token;
             Log.Debug(TAG, "Refreshed token: " + refreshedToken);
 
+            string carID = "";
+            
+            //push handling
 
             if (Intent.Extras != null)
             {
                 foreach (var key in Intent.Extras.KeySet())
                 {
+                    if (key == "vehicle_id")
+                    {
+                        carID = Intent.Extras.GetString(key);
+                    }
                     if (key == "action")
                     {
                         var value = Intent.Extras.GetString(key);
+                        int status=0;// 0 mean declined, 1 means approved
                         switch (Convert.ToInt32(value))
                         {
                             case 1:
                                 Log.Debug(TAG, "Notification: Permit Request");
+                                HandlePermitRequest(carID);
                                 break;
                             case 2:
+                                HandlePermitStatusChanged(carID,status);
                                 Log.Debug(TAG, "Notification: Permit Status Change");
                                 break;
                             case 3:
@@ -80,6 +91,7 @@ namespace Boris
                 }
             }
 
+            //fragments init
 
             var trans = SupportFragmentManager.BeginTransaction();
             mMainFragment = new mainFragment();
@@ -93,6 +105,7 @@ namespace Boris
             trans.Add(Resource.Id.fragmentContainer, mMainFragment, "Mainfragment");
             trans.Commit();
 
+            //login try
 
             String login_hash = Preferences.Get("login_hash", "1");
             String user_id = Preferences.Get("user_id", "0");
@@ -123,8 +136,12 @@ namespace Boris
 
                 }
 
-               FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
-               fab.Click += FabOnClick;
+                //fab 
+
+                FloatingActionButton fab = FindViewById<FloatingActionButton>(Resource.Id.fab);
+                fab.Click += FabOnClick;
+
+                //navigation menu
 
                 DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
                 ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_close);
@@ -145,7 +162,46 @@ namespace Boris
                 }
             }
         }
+        
+        //handle push notification
 
+        private void HandlePermitRequest(string carId)
+        {
+           
+            TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
+            TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
+            Button details = FindViewById<Button>(Resource.Id.detailsButton);
+            pending.Visibility = ViewStates.Invisible;
+            details.Text = "details";
+            details.Visibility = ViewStates.Visible;
+            waitingApproval.Text = "Someone wants your car!";
+            waitingApproval.Visibility = ViewStates.Visible;
+            Intent handle_try = new Intent(this, typeof(handleReqActivity));
+            handle_try.PutExtra("ID", carId);
+            StartActivity(handle_try);
+        }
+
+
+
+        private void HandlePermitStatusChanged(string carId, int status)
+        {
+            if (status == 1){
+                TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
+                TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
+                Button details = FindViewById<Button>(Resource.Id.detailsButton);
+                pending.Visibility = ViewStates.Invisible;
+                details.Text = "get the car!";
+                details.Visibility = ViewStates.Visible;
+                waitingApproval.Text = "Your Request was approved";
+                waitingApproval.Visibility = ViewStates.Visible;
+                Intent open_try = new Intent(this, typeof(openCar));
+                open_try.PutExtra("ID", carId);
+                StartActivity(open_try);
+            }
+            else{
+                //declined
+            }
+        }
 
         public override void OnBackPressed()
         {
@@ -159,6 +215,8 @@ namespace Boris
                 base.OnBackPressed();
             }
         }
+
+       //options menu
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
@@ -179,8 +237,8 @@ namespace Boris
 
         private void FabOnClick(object sender, EventArgs eventArgs)
         {
-            Intent review_try = new Intent(this, typeof(mapActivity));
-            StartActivity(review_try);
+            Intent map_try = new Intent(this, typeof(mapActivity));
+            StartActivity(map_try);
         }
 
         public bool OnNavigationItemSelected(IMenuItem item)
@@ -189,8 +247,9 @@ namespace Boris
             int id = item.ItemId;
             if (id == Resource.Id.nav_my_cars)
             {
-                 // showFragment(mMyCarsFragment);
+              // showFragment(mMyCarsFragment);
                Intent login_try = new Intent(this, typeof(liveActivity));
+                login_try.PutExtra("ID", "7029774");
                 StartActivity(login_try);
             }
             if (id == Resource.Id.nav_home)
@@ -213,6 +272,8 @@ namespace Boris
             drawer.CloseDrawer(GravityCompat.Start);
             return true;
         }
+          
+        //fragment mangament
 
         void showFragment(supportFragment fragment)
         {
@@ -223,6 +284,30 @@ namespace Boris
             trans.Commit();
             mCurrrentFragment = fragment; 
         }
+
+        // on resume main fragment
+        protected override void OnResume()
+        {
+            base.OnResume();
+            System.Console.WriteLine("resumed main activity");
+            TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
+            TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
+            bool isPending = Preferences.Get("isPending", false);
+            Log.Debug(TAG, "is pending create- " + isPending + ".");
+
+            if (isPending)
+            {
+                pending.Visibility = ViewStates.Invisible;
+                waitingApproval.Visibility = ViewStates.Visible;
+            }
+            else
+            {
+                pending.Visibility = ViewStates.Visible;
+                waitingApproval.Visibility = ViewStates.Invisible;
+            }
+        }
+
+        //push notification setingns
         void CreateNotificationChannel()
         {
            
@@ -246,10 +331,7 @@ namespace Boris
             int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
             return true;
         }
-        void mopenMapActivity()
-        {
-
-        }
+   
     }
 }
 

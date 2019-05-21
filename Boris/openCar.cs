@@ -47,7 +47,11 @@ namespace Boris
             SetContentView(Resource.Layout.openCarLayout);
             base.OnCreate(savedInstanceState);
             carId = Intent.GetStringExtra("ID");
-            IMG = Intent.GetStringExtra("IMG");
+
+            carInfo_result info = new carInfo_result();
+            info.get_from_cloud("https://carshareserver.azurewebsites.net/api/getCarDetails?vehicle_id=" + carId);
+            carTotalInfo totalInfo = info.getInfo();
+            IMG = totalInfo.img;
 
             CheckBt();
             bluetoothDeviceReceiver = new BluetoothDeviceReceiver(MAC_ADDRESS,this);// MAC_ADDRESS,this);
@@ -221,12 +225,11 @@ namespace Boris
         }
         void tryOpenCar(object sender, EventArgs eventArgs)
         {
+            openCarButton.Enabled = false;
             Console.WriteLine("button clicked");
             beginListenForData();
-            dataToSend = new Java.Lang.String("e");
+            dataToSend = new Java.Lang.String("1");
             writeData(dataToSend);
-
-
         }
         private void CheckBt()
         {

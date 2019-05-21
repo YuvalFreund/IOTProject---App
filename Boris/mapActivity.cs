@@ -96,9 +96,10 @@ namespace Boris
             string carIdString = marker.Id;
             carIdString = carIdString.Substring(1);
             carIdString = markers[carIdString];
-            Intent login_try = new Intent(this, typeof(carInfo));
-            login_try.PutExtra("ID",carIdString);
-            StartActivity(login_try);
+            Intent info_try = new Intent(this, typeof(carInfo));
+            info_try.PutExtra("ID",carIdString);
+            StartActivity(info_try);
+            Finish();
         }
     }
 }

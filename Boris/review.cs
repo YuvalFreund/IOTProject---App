@@ -15,11 +15,18 @@ namespace Boris
     [Activity(Label = "review")]
     public class review : Activity
     {
+        Button submit;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.reviewLayout);
-           // var ratingBar = FindViewById<RatingBar>(Resource.Id.ratingBar1);
+            submit = FindViewById<Button>(Resource.Id.submitReview);
+            submit.Click += submitAction;
+        }
+
+        private void submitAction(object sender, EventArgs e)
+        {
+            Finish();
         }
     }
 }

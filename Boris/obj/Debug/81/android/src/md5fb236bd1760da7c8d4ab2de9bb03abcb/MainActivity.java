@@ -15,6 +15,7 @@ public class MainActivity
 			"n_onBackPressed:()V:GetOnBackPressedHandler\n" +
 			"n_onCreateOptionsMenu:(Landroid/view/Menu;)Z:GetOnCreateOptionsMenu_Landroid_view_Menu_Handler\n" +
 			"n_onOptionsItemSelected:(Landroid/view/MenuItem;)Z:GetOnOptionsItemSelected_Landroid_view_MenuItem_Handler\n" +
+			"n_onResume:()V:GetOnResumeHandler\n" +
 			"n_onNavigationItemSelected:(Landroid/view/MenuItem;)Z:GetOnNavigationItemSelected_Landroid_view_MenuItem_Handler:Android.Support.Design.Widget.NavigationView/IOnNavigationItemSelectedListenerInvoker, Xamarin.Android.Support.Design\n" +
 			"";
 		mono.android.Runtime.register ("Boris.MainActivity, Boris", MainActivity.class, __md_methods);
@@ -59,6 +60,14 @@ public class MainActivity
 	}
 
 	private native boolean n_onOptionsItemSelected (android.view.MenuItem p0);
+
+
+	public void onResume ()
+	{
+		n_onResume ();
+	}
+
+	private native void n_onResume ();
 
 
 	public boolean onNavigationItemSelected (android.view.MenuItem p0)

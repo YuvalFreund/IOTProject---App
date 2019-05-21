@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
+using supportFragment = Android.Support.V4.App.Fragment;
 
 using Android.App;
 using Android.Content;
@@ -12,6 +14,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Boris;
+using Xamarin.Essentials;
+
+
 
 namespace Boris
 {
@@ -23,7 +28,7 @@ namespace Boris
         string imgAdress;
         private ListView nListView;
         //private List<list_item> nItems;
-
+      
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,7 +37,7 @@ namespace Boris
             SetContentView(Resource.Layout.carInfoLayout);
             GridLayout carModeGridLayout = FindViewById<GridLayout>(Resource.Id.gridLayout1);
 
-            //carModeGridLayout.SetBackgroundColor(Color.Aqua);
+                   //carModeGridLayout.SetBackgroundColor(Color.Aqua);
             TextView carModelView = FindViewById<TextView>(Resource.Id.carInfoModel);
             TextView carProductionView = FindViewById<TextView>(Resource.Id.carInfoProduction);
             TextView carLicenseView = FindViewById<TextView>(Resource.Id.carInfoLicense);
@@ -117,13 +122,26 @@ namespace Boris
         void requestCar(object sender, EventArgs eventArgs)
         {
             
-            Intent openCar_try = new Intent(this, typeof(openCar));
-            openCar_try.PutExtra("ID", carId);
-            openCar_try.PutExtra("IMG", imgAdress);
-            StartActivity(openCar_try);
-            Finish();
+            
+            string login_hash= Preferences.Get("login_hash", "1");
+            String user_id = Preferences.Get("user_id", "0");
 
-          
+            Preferences.Set("requestedCar", carId);
+            Preferences.Set("isPending", true);
+
+            String address = "https://carshareserver.azurewebsites.net/api/requestPermit?user_id=" + user_id + "&login_hash=" + login_hash + "&vehicle_id=" + carId;
+            HttpClient client = new HttpClient();
+            var responseString = client.GetStringAsync(address);
+
+
+             
+            Context context = Application.Context;
+            string text = "Permission was asked from owner";
+            ToastLength duration = ToastLength.Long;
+            var toast = Toast.MakeText(context, text, duration);
+            toast.Show();
+            Finish();
+                  
         }
     }
 }

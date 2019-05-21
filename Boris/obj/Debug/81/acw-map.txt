@@ -13,18 +13,15 @@ boris.carInfo;md5fb236bd1760da7c8d4ab2de9bb03abcb.carInfo
 Boris.getCar, Boris;md5fb236bd1760da7c8d4ab2de9bb03abcb.getCar
 Boris.getCar;md5fb236bd1760da7c8d4ab2de9bb03abcb.getCar
 boris.getCar;md5fb236bd1760da7c8d4ab2de9bb03abcb.getCar
+Boris.handleReqActivity, Boris;md5fb236bd1760da7c8d4ab2de9bb03abcb.handleReqActivity
+Boris.handleReqActivity;md5fb236bd1760da7c8d4ab2de9bb03abcb.handleReqActivity
+boris.handleReqActivity;md5fb236bd1760da7c8d4ab2de9bb03abcb.handleReqActivity
 Boris.History, Boris;md5fb236bd1760da7c8d4ab2de9bb03abcb.History
 Boris.History;md5fb236bd1760da7c8d4ab2de9bb03abcb.History
 boris.History;md5fb236bd1760da7c8d4ab2de9bb03abcb.History
-<<<<<<< HEAD
 Boris.liveActivity, Boris;md5fb236bd1760da7c8d4ab2de9bb03abcb.liveActivity
 Boris.liveActivity;md5fb236bd1760da7c8d4ab2de9bb03abcb.liveActivity
 boris.liveActivity;md5fb236bd1760da7c8d4ab2de9bb03abcb.liveActivity
-=======
-Boris.liveActivitypublic, Boris;md5fb236bd1760da7c8d4ab2de9bb03abcb.liveActivitypublic
-Boris.liveActivitypublic;md5fb236bd1760da7c8d4ab2de9bb03abcb.liveActivitypublic
-boris.liveActivitypublic;md5fb236bd1760da7c8d4ab2de9bb03abcb.liveActivitypublic
->>>>>>> 05a62e391b1452ebe27a8f1a05de5a887529d20f
 Boris.MainActivity, Boris;md5fb236bd1760da7c8d4ab2de9bb03abcb.MainActivity
 Boris.MainActivity;md5fb236bd1760da7c8d4ab2de9bb03abcb.MainActivity
 boris.MainActivity;md5fb236bd1760da7c8d4ab2de9bb03abcb.MainActivity

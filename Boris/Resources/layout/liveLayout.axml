@@ -22,4 +22,12 @@
 		  android:layout_gravity="center"
 		  android:layout_marginTop="50dp"
           class="com.google.android.gms.maps.MapFragment" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="finish drive"
+        android:id="@+id/finishDriveButton"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+    />
 </LinearLayout>
