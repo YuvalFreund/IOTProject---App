@@ -38,13 +38,7 @@ namespace Boris
             TextView waitingApproval = root.FindViewById<TextView>(Resource.Id.approvalText);
             bool isPending = Preferences.Get("isPending", false);
             Log.Debug(TAG, "is pending create- " + isPending + ".");
-            var addi = root.FindViewById<Button>(Resource.Id.detailsButton);
             // get my cars
-            addi.Click += delegate
-            {
-                Intent try_open = new Intent(this.Context, typeof(openCar));
-                StartActivity(try_open);
-            };
             if (isPending)
             {
                 pending.Visibility = ViewStates.Invisible;

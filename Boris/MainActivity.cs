@@ -49,6 +49,8 @@ namespace Boris
             CreateNotificationChannel();
 
             Preferences.Set("isPending", false);
+            Preferences.Set("isHandle", false);
+            Preferences.Set("isWaiting", false);
 
             const string TAG = "MyFirebaseIIDService";
             var refreshedToken = FirebaseInstanceId.Instance.Token;
@@ -77,10 +79,13 @@ namespace Boris
                         {
                             case 1:
                                 Log.Debug(TAG, "Notification: Permit Request");
-                                HandlePermitRequest(carID);
+                                Preferences.Set("isHandle" ,true);
+                                Preferences.Set("carId",carID);
                                 break;
                             case 2:
-                                HandlePermitStatusChanged(carID,status);
+                                Preferences.Set("isWaiting", true);
+                                Preferences.Set("carId", carID);
+                                Preferences.Set("responseStauts", status);
                                 Log.Debug(TAG, "Notification: Permit Status Change");
                                 break;
                             case 3:
@@ -170,21 +175,23 @@ namespace Boris
 
         private void HandlePermitRequest(string carId)
         {
-           
             TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
             TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
             Button details = FindViewById<Button>(Resource.Id.detailsButton);
+            details.Click += handleClickAction;
             pending.Visibility = ViewStates.Invisible;
             details.Text = "details";
             details.Visibility = ViewStates.Visible;
             waitingApproval.Text = "Someone wants your car!";
             waitingApproval.Visibility = ViewStates.Visible;
-            Intent handle_try = new Intent(this, typeof(handleReqActivity));
-            handle_try.PutExtra("ID", carId);
-            StartActivity(handle_try);
         }
 
-
+        private void handleClickAction(object sender, EventArgs e)
+        {
+            Intent handleTry = new Intent(this, typeof(handleReqActivity));
+            handleTry.PutExtra("ID", "7029774");
+            StartActivity(handleTry);
+        }
 
         private void HandlePermitStatusChanged(string carId, string status)
         {
@@ -299,12 +306,26 @@ namespace Boris
         protected override void OnResume()
         {
             base.OnResume();
+            
             System.Console.WriteLine("resumed main activity");
             TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
             TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
             bool isPending = Preferences.Get("isPending", false);
+            bool isHandle = Preferences.Get("isHandle", false);
+            bool isWaiting = Preferences.Get("isWaiting", false);
+            string vehicle = Preferences.Get("carId", "");
+            string resStatus = Preferences.Get("responseStauts", "0");
+            if (isHandle)
+            {
+                HandlePermitRequest(vehicle);
+                return;
+            }
             Log.Debug(TAG, "is pending create- " + isPending + ".");
-
+            if (isWaiting)
+            {
+                HandlePermitStatusChanged(vehicle, resStatus);
+                return;
+            }
             if (isPending)
             {
                 pending.Visibility = ViewStates.Invisible;

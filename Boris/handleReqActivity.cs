@@ -91,6 +91,8 @@ namespace Boris
             ToastLength duration = ToastLength.Long;
             var toast = Toast.MakeText(context, text, duration);
             toast.Show();
+            Preferences.Set("isPending", true);
+            Preferences.Set("isHandle", false);
             Finish();
         }
         void declineAction(object sender, EventArgs eventArgs)
@@ -104,6 +106,8 @@ namespace Boris
             string text = "You declined the request.";
             ToastLength duration = ToastLength.Long;
             var toast = Toast.MakeText(context, text, duration);
+            Preferences.Set("isPending", true);
+            Preferences.Set("isHandle", false);
             toast.Show();
             Finish();
 
