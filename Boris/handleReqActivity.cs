@@ -93,6 +93,7 @@ namespace Boris
             toast.Show();
             Preferences.Set("isPending", true);
             Preferences.Set("isHandle", false);
+            Preferences.Set("isWaiting", false);
             Finish();
         }
         void declineAction(object sender, EventArgs eventArgs)
@@ -108,6 +109,7 @@ namespace Boris
             var toast = Toast.MakeText(context, text, duration);
             Preferences.Set("isPending", true);
             Preferences.Set("isHandle", false);
+            Preferences.Set("isWaiting", false);
             toast.Show();
             Finish();
 

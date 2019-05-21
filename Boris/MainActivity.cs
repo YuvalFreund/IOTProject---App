@@ -51,19 +51,25 @@ namespace Boris
             Preferences.Set("isPending", false);
             Preferences.Set("isHandle", false);
             Preferences.Set("isWaiting", false);
+            Preferences.Set("responseStauts", "");
 
             const string TAG = "MyFirebaseIIDService";
             var refreshedToken = FirebaseInstanceId.Instance.Token;
             Log.Debug(TAG, "Refreshed token: " + refreshedToken);
 
             string carID = "";
-            
+            string status = "0";// 0 mean declined, 1 means approved
+
             //push handling
 
             if (Intent.Extras != null)
             {
                 foreach (var key in Intent.Extras.KeySet())
                 {
+                    if(key == status)
+                    {
+                        status = Intent.Extras.GetString(key);
+                    }
                     if (key == "vehicle_id")
                     {
                         carID = Intent.Extras.GetString(key);
@@ -71,7 +77,6 @@ namespace Boris
                     if (key == "action")
                     {
                         var value = Intent.Extras.GetString(key);
-                        int status=0;// 0 mean declined, 1 means approved
                         switch (Convert.ToInt32(value))
                         {
                             case 1:
@@ -185,28 +190,38 @@ namespace Boris
 
         private void handleClickAction(object sender, EventArgs e)
         {
+            Button details = FindViewById<Button>(Resource.Id.detailsButton);
+            details.Click -= handleClickAction;
             Intent handleTry = new Intent(this, typeof(handleReqActivity));
             handleTry.PutExtra("ID", "7029774");
             StartActivity(handleTry);
         }
 
-        private void HandlePermitStatusChanged(string carId, int status)
+        private void HandlePermitStatusChanged(string carId, string status)
         {
-            if (status == 1){
-                TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
-                TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
-                Button details = FindViewById<Button>(Resource.Id.detailsButton);
+            TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
+            TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
+            Button details = FindViewById<Button>(Resource.Id.detailsButton);
+            if (status == "1"){
                 pending.Visibility = ViewStates.Invisible;
                 details.Text = "get the car!";
                 details.Visibility = ViewStates.Visible;
                 waitingApproval.Text = "Your Request was approved";
                 waitingApproval.Visibility = ViewStates.Visible;
-                Intent open_try = new Intent(this, typeof(openCar));
-                open_try.PutExtra("ID", carId);
-                StartActivity(open_try);
+                
             }
             else{
-                //declined
+                pending.Visibility = ViewStates.Visible;
+                details.Visibility = ViewStates.Invisible;
+                waitingApproval.Visibility = ViewStates.Invisible;
+                Context context = Application.Context;
+                string text = "Your request was declined.";
+                ToastLength duration = ToastLength.Long;
+                var toast = Toast.MakeText(context, text, duration);
+                Preferences.Set("isPending", true);
+                Preferences.Set("isHandle", false);
+                Preferences.Set("isWaiting", false);
+                toast.Show();
             }
         }
 
