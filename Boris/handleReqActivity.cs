@@ -21,6 +21,7 @@ namespace Boris
     {
 
         string carId;
+        string renter_id;
         string IMG;
         Button approve;
         Button decline;
@@ -31,13 +32,14 @@ namespace Boris
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.handleReqLayout);
             carId = Intent.GetStringExtra("ID");
+            renter_id = Intent.GetStringExtra("renter_id");
             approve = FindViewById<Button>(Resource.Id.approveReqButton);
             decline = FindViewById<Button>(Resource.Id.declineReqButton);
             carImage = FindViewById<ImageView>(Resource.Id.handleRequstImg);
             lisence = FindViewById<TextView>(Resource.Id.handelReqLicense);
             approve.Click += approveAction;
             decline.Click += declineAction;
-
+            Console.WriteLine("car num is:" + carId);
             carInfo_result info = new carInfo_result();
             info.get_from_cloud("https://carshareserver.azurewebsites.net/api/getCarDetails?vehicle_id=" + carId);
             carTotalInfo totalInfo = info.getInfo();
@@ -82,23 +84,28 @@ namespace Boris
         void approveAction(object sender, EventArgs eventArgs)
         {
             string login_hash = Preferences.Get("login_hash", "1");
-            String address = "https://carshareserver.azurewebsites.net/api/permitAction?action=" + "1" + "&login_hash=" + login_hash + "&permit_id=" + carId;
+            string user_name = Preferences.Get("user_id", "");
+            String address = "https://carshareserver.azurewebsites.net/api/permitAction?action=" + "1" + "&login_hash=" + login_hash + "&vehicle_id=" + carId + "&user_id=" + user_name +"&renter_id=" + renter_id;
             HttpClient client = new HttpClient();
+            Console.WriteLine(address);
+
             var responseString = client.GetStringAsync(address);
-            //accept action to server
+            Console.WriteLine("this is the respone:" +responseString);
             Context context = Application.Context;
             string text = "You accepted the request.";
             ToastLength duration = ToastLength.Long;
             var toast = Toast.MakeText(context, text, duration);
             toast.Show();
-            Preferences.Set("isPending", true);
+            Preferences.Set("isPending", false);
             Preferences.Set("isHandle", false);
+            Preferences.Set("displaySettings", 0);
             Finish();
         }
         void declineAction(object sender, EventArgs eventArgs)
         {
             string login_hash = Preferences.Get("login_hash", "1");
-            String address = "https://carshareserver.azurewebsites.net/api/permitAction?action=" + "0" + "&login_hash=" + login_hash + "&permit_id=" + carId;
+            string user_name = Preferences.Get("user_id", "");
+            String address = "https://carshareserver.azurewebsites.net/api/permitAction?action=" + "0" + "&login_hash=" + login_hash + "&vehicle_id=" + carId + "&user_id=" + user_name + "&renter_id=" + renter_id;
             HttpClient client = new HttpClient();
             var responseString = client.GetStringAsync(address);
             //decline action to server
@@ -106,8 +113,9 @@ namespace Boris
             string text = "You declined the request.";
             ToastLength duration = ToastLength.Long;
             var toast = Toast.MakeText(context, text, duration);
-            Preferences.Set("isPending", true);
+            Preferences.Set("isPending", false);
             Preferences.Set("isHandle", false);
+            Preferences.Set("displaySettings", 0);
             toast.Show();
             Finish();
 

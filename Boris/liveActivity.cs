@@ -55,7 +55,7 @@ namespace Boris
             timer =  new Timer();
             timer.Interval = 1000;
             timer.Elapsed += OnTimedEvent;
-            timer.Enabled = true;
+            timer.Start();
             totalTime = FindViewById<TextView>(Resource.Id.totalTimeView);
             totalCost = FindViewById<TextView>(Resource.Id.totalCostView);
             totalTimeVal = 0;
@@ -66,7 +66,6 @@ namespace Boris
         private void finishAction(object sender, EventArgs e)
         {
             Intent review_try= new Intent(this, typeof(review));
-           // review_try.PutExtra("ID", "7029774");
             StartActivity(review_try);
             Finish();
         }

@@ -51,50 +51,62 @@ namespace Boris
             Preferences.Set("isPending", false);
             Preferences.Set("isHandle", false);
             Preferences.Set("isWaiting", false);
+            Preferences.Set("responseStauts", "");
+            Preferences.Set("displaySetting", 0);
+
 
             const string TAG = "MyFirebaseIIDService";
             var refreshedToken = FirebaseInstanceId.Instance.Token;
             Log.Debug(TAG, "Refreshed token: " + refreshedToken);
 
             string carID = "";
-            string status = "0";
+            string renter_id = "";
+            string action = "";
+            bool is_action = false;
+            
             //push handling
 
             if (Intent.Extras != null)
             {
                 foreach (var key in Intent.Extras.KeySet())
                 {
+                   
+                    if (key == "user_id")
+                    {
+                        renter_id = Intent.Extras.GetString(key);
+                    }
                     if (key == "vehicle_id")
                     {
                         carID = Intent.Extras.GetString(key);
                     }
-                    if (key == "status")
-                    {
-                        status = Intent.Extras.GetString(key);
-                    }
                     if (key == "action")
                     {
-                        var value = Intent.Extras.GetString(key);
-                        switch (Convert.ToInt32(value))
-                        {
-                            case 1:
-                                Log.Debug(TAG, "Notification: Permit Request");
-                                Preferences.Set("isHandle" ,true);
-                                Preferences.Set("carId",carID);
-                                break;
-                            case 2:
-                                Preferences.Set("isWaiting", true);
-                                Preferences.Set("carId", carID);
-                                Preferences.Set("responseStauts", status);
-                                Log.Debug(TAG, "Notification: Permit Status Change");
-                                break;
-                            case 3:
-                                Log.Debug(TAG, "Notification: Car Action");
-                                break;
-                            default:
-                                Log.Debug(TAG, "Notification: Unknown");
-                                break;
-                        }
+                        action = Intent.Extras.GetString(key);
+                        is_action = true;
+                    }
+                }
+                if (is_action)
+                {
+                    switch (Convert.ToInt32(action))
+                    {
+                        case 1:
+                            Log.Debug(TAG, "Notification: Permit Request");
+                            Preferences.Set("displaySetting", 1);
+                            Preferences.Set("carId", carID);
+                            string rent_car = Preferences.Get("carId", "");
+                            Console.WriteLine("after set:" + rent_car);
+                            Preferences.Set("renter_id", renter_id);
+                            break;
+                        case 2: //declined
+                            Preferences.Set("displaySetting", 2);
+                            Log.Debug(TAG, "Notification: Permit Status Change");
+                            break;
+                        case 3: //approved
+                            Preferences.Set("displaySetting", 3);
+                            break;
+                        default:
+                            Log.Debug(TAG, "Notification: Unknown");
+                            break;
                     }
                 }
             }
@@ -188,38 +200,56 @@ namespace Boris
 
         private void handleClickAction(object sender, EventArgs e)
         {
+            string renter_id = Preferences.Get("renter_id", "");
+            string rent_car = Preferences.Get("carId", "");
+
+            Button details = FindViewById<Button>(Resource.Id.detailsButton);
+            details.Click -= handleClickAction;
             Intent handleTry = new Intent(this, typeof(handleReqActivity));
-            handleTry.PutExtra("ID", "7029774");
+            handleTry.PutExtra("ID", rent_car);
+            handleTry.PutExtra("renter_id", renter_id);
             StartActivity(handleTry);
         }
+        private void handleOpenkAction(object sender, EventArgs e)
+        {
+            string rent_car = Preferences.Get("requestedCar", "");      
+            Intent openTry = new Intent(this, typeof(openCar));
+            openTry.PutExtra("ID", rent_car);
+            StartActivity(openTry);
+        }
 
-        private void HandlePermitStatusChanged(string carId, string status)
+        private void HandlePermitApproved(string carId)
         {
             TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
             TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
             Button details = FindViewById<Button>(Resource.Id.detailsButton);
-            if (status == "1"){
-                pending.Visibility = ViewStates.Invisible;
-                details.Text = "get the car!";
-                details.Visibility = ViewStates.Visible;
-                waitingApproval.Text = "Your Request was approved";
-                waitingApproval.Visibility = ViewStates.Visible;
-                Intent open_try = new Intent(this, typeof(openCar));
-                open_try.PutExtra("ID", carId);
-                StartActivity(open_try);
-            }
-            else{
-                pending.Visibility = ViewStates.Visible;
-                details.Visibility = ViewStates.Invisible;
-                waitingApproval.Visibility = ViewStates.Invisible;
-                Context context = Application.Context;
-                string text = "Your request was declined.";
-                ToastLength duration = ToastLength.Long;
-                var toast = Toast.MakeText(context, text, duration);
-                toast.Show();
-            }
+            pending.Visibility = ViewStates.Invisible;
+            details.Text = "get the car!";
+            details.Visibility = ViewStates.Visible;
+            details.Click += handleOpenkAction;
+            waitingApproval.Text = "Your Request was approved";
+            waitingApproval.Visibility = ViewStates.Visible;
+            Preferences.Set("isPending", false);
+            Preferences.Set("isHandle", false);
         }
+        private void HandlePermitDeclined()
+        {
+            TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
+            TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
+            Button details = FindViewById<Button>(Resource.Id.detailsButton);
+            pending.Visibility = ViewStates.Visible;
+            details.Visibility = ViewStates.Invisible;
+            waitingApproval.Visibility = ViewStates.Invisible;
+            Context context = Application.Context;
+            string text = "Your request was declined.";
+            ToastLength duration = ToastLength.Long;
+            var toast = Toast.MakeText(context, text, duration);
+            details.Visibility = ViewStates.Invisible;
+            Preferences.Set("isPending", false);
+            Preferences.Set("isHandle", false);
+            toast.Show();
 
+        }
         public override void OnBackPressed()
         {
             DrawerLayout drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
@@ -265,7 +295,7 @@ namespace Boris
             if (id == Resource.Id.nav_my_cars)
             {
               // showFragment(mMyCarsFragment);
-               Intent login_try = new Intent(this, typeof(liveActivity));
+                Intent login_try = new Intent(this, typeof(openCar));
                 login_try.PutExtra("ID", "7029774");
                 StartActivity(login_try);
             }
@@ -305,36 +335,41 @@ namespace Boris
         // on resume main fragment
         protected override void OnResume()
         {
+            Button details = FindViewById<Button>(Resource.Id.detailsButton);
             base.OnResume();
-            
             System.Console.WriteLine("resumed main activity");
             TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
             TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
             bool isPending = Preferences.Get("isPending", false);
             bool isHandle = Preferences.Get("isHandle", false);
-            bool isWaiting = Preferences.Get("isWaiting", false);
             string vehicle = Preferences.Get("carId", "");
             string resStatus = Preferences.Get("responseStauts", "0");
-            if (isHandle)
+            int display = Preferences.Get("displaySetting", 0);
+            switch (display)
             {
-                HandlePermitRequest(vehicle);
-                return;
-            }
-            Log.Debug(TAG, "is pending create- " + isPending + ".");
-            if (isWaiting)
-            {
-                HandlePermitStatusChanged(vehicle, resStatus);
-                return;
-            }
-            if (isPending)
-            {
-                pending.Visibility = ViewStates.Invisible;
-                waitingApproval.Visibility = ViewStates.Visible;
-            }
-            else
-            {
-                pending.Visibility = ViewStates.Visible;
-                waitingApproval.Visibility = ViewStates.Invisible;
+                case 0:
+                    if (isPending)
+                    {
+                        details.Visibility = ViewStates.Invisible;
+                        pending.Visibility = ViewStates.Invisible;
+                        waitingApproval.Visibility = ViewStates.Visible;
+                    }
+                    else
+                    {
+                        details.Visibility = ViewStates.Invisible;
+                        pending.Visibility = ViewStates.Visible;
+                        waitingApproval.Visibility = ViewStates.Invisible;
+                    }
+                    break;
+                case 1:
+                    HandlePermitRequest(vehicle);
+                    break;
+                case 2:
+                    HandlePermitDeclined();
+                    break;
+                case 3:
+                    HandlePermitApproved(vehicle);
+                    break;
             }
         }
 

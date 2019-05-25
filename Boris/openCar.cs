@@ -54,7 +54,7 @@ namespace Boris
             IMG = totalInfo.img;
 
             CheckBt();
-            bluetoothDeviceReceiver = new BluetoothDeviceReceiver(MAC_ADDRESS,this);// MAC_ADDRESS,this);
+            bluetoothDeviceReceiver = new BluetoothDeviceReceiver(MAC_ADDRESS,this);
             RegisterReceiver(bluetoothDeviceReceiver, new IntentFilter(BluetoothDevice.ActionFound));
 
             openCarButton = FindViewById<Button>(Resource.Id.openCarButton);
@@ -100,18 +100,12 @@ namespace Boris
                 FindViewById<RelativeLayout>(Resource.Id.openCarloadingPanel).Visibility = ViewStates.Gone;
             }
 
-            /*timer = new System.Timers.Timer();
-            timer.Interval = 15000;
-            timer.Elapsed += OnTimedEvent;
-            timer.Enabled = true;*/
-            bool started = mBluetoothAdapter.StartDiscovery();
-            System.Console.WriteLine("is scan startd: " + started);
 
-        }
-        private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
-        {
+            //bool started = mBluetoothAdapter.StartDiscovery();
+           // System.Console.WriteLine("is scan startd: " + started);
             Connect();
         }
+   
 
 
         public void Connect()
@@ -168,12 +162,12 @@ namespace Boris
                 Console.WriteLine("message not recieved yet");
                 Console.WriteLine(ex.Message);
             }
-            //Creamos un hilo que estara corriendo en background el cual verificara si hay algun dato
-            //por parte del arduino
+            // We create a thread that will be running in background which will check if there is any data
+            // by the arduino
             Task.Factory.StartNew(() => {
-                //declaramos el buffer donde guardaremos la lectura
+                // declare the buffer where we will keep the reading
                 byte[] buffer = new byte[1024];
-                //declaramos el numero de bytes recibidos
+                // declare the number of bytes received
                 int bytes;
                 while (true)
                 {
@@ -186,14 +180,21 @@ namespace Boris
                         {
                             System.Console.WriteLine("Got something");
                             RunOnUiThread(() => {
-                                valor = System.Text.Encoding.ASCII.GetString(buffer);
-                                System.Console.WriteLine(valor);
-
+                                System.Console.WriteLine(buffer[0]);
+                                System.Console.WriteLine(buffer[1]);
+                                System.Console.WriteLine(buffer[2]);
+                                if (buffer[0] == 49)
+                                {
+                                    Intent live_try = new Intent(this, typeof(liveActivity));
+                                    StartActivity(live_try);
+                                    Finish();
+                                }
                             });
                         }
                     }
                     catch (Java.IO.IOException)
                     {
+                        System.Console.WriteLine("catched something");
                         RunOnUiThread(() => {
                         });
                         break;
@@ -227,9 +228,9 @@ namespace Boris
         {
             openCarButton.Enabled = false;
             Console.WriteLine("button clicked");
-            beginListenForData();
             dataToSend = new Java.Lang.String("1");
             writeData(dataToSend);
+            beginListenForData();
         }
         private void CheckBt()
         {
