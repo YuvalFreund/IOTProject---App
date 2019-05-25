@@ -20,25 +20,58 @@ using Android.Widget;
 using Boris.Resources;
 using Xamarin.Android;
 using Xamarin.Essentials;
+using System.Net.Http;
+
 namespace Boris
 {
     [Activity(Label = "addCar")]
     public class addCar : Activity
     {
+        Button submit;
+        AutoCompleteTextView manufacturer;
+        AutoCompleteTextView model;
+        AutoCompleteTextView color;
+        AutoCompleteTextView year;
+        AutoCompleteTextView lisence;
+        RadioGroup mode;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.addCarLayout);
-  
-            AutoCompleteTextView textCarModel = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarModel);
+            
+
+            submit = FindViewById<Button>(Resource.Layout.submitNewCar);
+            lisence = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarLP);
+            manufacturer = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarManufacturer);
+            model = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarModel);
+            color = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarColor);
+            year = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarProductionYear);
+            mode= FindViewById<RadioGroup>(Resource.Layout.inputCarProductionYear);
+            AutoCompleteTextView textCarModel = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarManufacturer);
             string[] models = Resources.GetStringArray(Resource.Array.carModels);
             var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleDropDownItem1Line, models);
             textCarModel.Adapter = adapter;
-
+            submit.Click += submitAction;
             AutoCompleteTextView textCarColor = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarColor);
             string[] colors = Resources.GetStringArray(Resource.Array.carColors);
             var adapter2 = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleDropDownItem1Line, colors);
             textCarColor.Adapter = adapter2;
+        }
+
+        private void submitAction(object sender, EventArgs e)
+        {
+            string mmodel = model.Text;
+            string mmanufacturer = manufacturer.Text;
+            string mcolor = color.Text;
+            string myear = year.Text;
+            string mlisence = lisence.Text;
+            string login_hash = Preferences.Get("login_hash", "");
+            String address = "https://carshareserver.azurewebsites.net/api/addCar?manufacturer=" + mmanufacturer + "&Lisence=" + mlisence + "&color=" + mcolor + "&model=" + mmodel + "&year=" + myear + "&login_hash=" + login_hash;
+            Console.WriteLine(address);
+            HttpClient client = new HttpClient();
+            var responseString = client.GetStringAsync(address);
+            Finish();
         }
     }
 }

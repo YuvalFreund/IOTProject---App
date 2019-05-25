@@ -27,19 +27,31 @@ namespace Boris
         Button decline;
         ImageView carImage;
         TextView lisence;
+        TextView username;
+        TextView userEmail;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.handleReqLayout);
             carId = Intent.GetStringExtra("ID");
             renter_id = Intent.GetStringExtra("renter_id");
+
+            user user = new user();
+            string login_hash = Preferences.Get("login_hash", "1");
+            user.get_from_cloud(renter_id, login_hash);
+
             approve = FindViewById<Button>(Resource.Id.approveReqButton);
             decline = FindViewById<Button>(Resource.Id.declineReqButton);
             carImage = FindViewById<ImageView>(Resource.Id.handleRequstImg);
             lisence = FindViewById<TextView>(Resource.Id.handelReqLicense);
+            userEmail = FindViewById<TextView>(Resource.Id.handleReqUserEmail);
+            username= FindViewById<TextView>(Resource.Id.handleReqUserName);
+
+            username.Text =  user.first_name +" " + user.last_name;
+            userEmail.Text =  user.email;
+
             approve.Click += approveAction;
             decline.Click += declineAction;
-            Console.WriteLine("car num is:" + carId);
             carInfo_result info = new carInfo_result();
             info.get_from_cloud("https://carshareserver.azurewebsites.net/api/getCarDetails?vehicle_id=" + carId);
             carTotalInfo totalInfo = info.getInfo();

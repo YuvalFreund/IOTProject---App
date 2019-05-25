@@ -27,7 +27,6 @@ namespace Boris
         string carId;
         string imgAdress;
         private ListView nListView;
-        //private List<list_item> nItems;
       
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -37,7 +36,6 @@ namespace Boris
             SetContentView(Resource.Layout.carInfoLayout);
             GridLayout carModeGridLayout = FindViewById<GridLayout>(Resource.Id.gridLayout1);
 
-                   //carModeGridLayout.SetBackgroundColor(Color.Aqua);
             TextView carModelView = FindViewById<TextView>(Resource.Id.carInfoModel);
             TextView carProductionView = FindViewById<TextView>(Resource.Id.carInfoProduction);
             TextView carLicenseView = FindViewById<TextView>(Resource.Id.carInfoLicense);
@@ -65,6 +63,7 @@ namespace Boris
             }
 
             user carOwner = totalInfo.User;
+            Preferences.Set("reviewee", carOwner.id);
             carUserView.Text = carOwner.first_name + " " + carOwner.last_name;
             carUserEmailView.Text = carOwner.email;
             async void GetImageBitmapFromUrl(string url, DownloadDataCompletedEventHandler eventFunc)
@@ -132,8 +131,6 @@ namespace Boris
             String address = "https://carshareserver.azurewebsites.net/api/requestPermit?user_id=" + user_id + "&login_hash=" + login_hash + "&vehicle_id=" + carId;
             HttpClient client = new HttpClient();
             var responseString = client.GetStringAsync(address);
-
-
              
             Context context = Application.Context;
             string text = "Permission was asked from owner";

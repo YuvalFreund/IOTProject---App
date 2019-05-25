@@ -22,7 +22,7 @@ using Java.Util;
 namespace Boris
 {
 
-    [Activity(Label = "mapActivity")]
+    [Activity(Label = "Find a car")]
     public class mapActivity : AppCompatActivity, IOnMapReadyCallback,  GoogleMap.IOnInfoWindowClickListener
     {
 

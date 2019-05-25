@@ -21,7 +21,7 @@ using Android.Widget;
 
 namespace Boris
 {
-    [Activity(Label = "liveActivity")]
+    [Activity(Label = "Active Drive")]
     public class liveActivity : AppCompatActivity, IOnMapReadyCallback 
     {
         private System.Timers.Timer timer;
@@ -77,12 +77,12 @@ namespace Boris
             if (totalTimeVal < 600){
                 string minuets = "0" + totalTimeVal / 60 + ":";
                 string seconds = "0" + totalTimeVal % 60;
-                totalTime.Text = "Total time:" + minuets+seconds;
+                totalTime.Text = minuets+seconds;
            }
             else{
                 totalTime.Text = totalTimeVal / 60  + ":" + totalTimeVal % 60;
             }
-            totalCost.Text = "Total cost: " + totalCostVal;
+            totalCost.Text = totalCostVal.ToString();
         }
 
         public void OnMapReady(GoogleMap googleMap)
