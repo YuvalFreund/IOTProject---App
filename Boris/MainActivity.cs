@@ -295,10 +295,10 @@ namespace Boris
             if (id == Resource.Id.nav_my_cars)
             {
                 // showFragment(mMyCarsFragment);
-                Intent req_try = new Intent(this, typeof(handleReqActivity));
-                req_try.PutExtra("ID", "7029774");
-                req_try.PutExtra("renter_id", "2");
-                StartActivity(req_try);
+                Intent live_try = new Intent(this, typeof(handleReqActivity));
+                live_try.PutExtra("ID", "7029774");
+                live_try.PutExtra("renter_id", "2");
+                StartActivity(live_try);
             }
             if (id == Resource.Id.nav_home)
             {
