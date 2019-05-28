@@ -41,13 +41,13 @@ namespace Boris
             SetContentView(Resource.Layout.addCarLayout);
             
 
-            submit = FindViewById<Button>(Resource.Layout.submitNewCar);
-            lisence = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarLP);
-            manufacturer = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarManufacturer);
-            model = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarModel);
-            color = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarColor);
-            year = FindViewById<AutoCompleteTextView>(Resource.Layout.inputCarProductionYear);
-            mode= FindViewById<RadioGroup>(Resource.Layout.inputCarProductionYear);
+            submit = FindViewById<Button>(Resource.Id.submitNewCar);
+            lisence = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarLP);
+            manufacturer = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarManufacturer);
+            model = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarModel);
+            color = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarColor);
+            year = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarProductionYear);
+            mode= FindViewById<RadioGroup>(Resource.Id.inputCarProductionYear);
             AutoCompleteTextView textCarModel = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarManufacturer);
             string[] models = Resources.GetStringArray(Resource.Array.carModels);
             var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleDropDownItem1Line, models);

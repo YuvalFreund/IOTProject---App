@@ -15,12 +15,12 @@
 	<AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/inputCarManufacturer"
 		android:layout_width="fill_parent"
-		android:hint="Car Manufacturer"
+		android:hint="Make"
 		android:layout_height="wrap_content" />
     <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/inputCarModel"
 		android:layout_width="fill_parent"
-		android:hint="Car Model"
+		android:hint="Model"
 		android:layout_height="wrap_content" />
 	<AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/inputCarProductionYear"
