@@ -41,11 +41,11 @@
 		android:text="SUBMIT"
         android:textSize="30dp"
         android:textColor="#ffffff"
+        android:background="@drawable/rounded_button_green"
         android:layout_gravity="bottom|end"
         android:textStyle="bold"
 		android:layout_marginTop="30dp"
 		android:layout_width="match_parent"
-        android:background="@drawable/rounded_button_off"
 		android:layout_height="wrap_content"
 		android:id="@+id/submitReview" />
 

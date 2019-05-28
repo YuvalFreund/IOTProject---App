@@ -296,6 +296,9 @@
     <AndroidResource Include="Resources\drawable\rounded_button_red.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\rounded_button_green.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="Resources\drawable\shadow_rect.xml">
       <SubType>Designer</SubType>
     </Content>

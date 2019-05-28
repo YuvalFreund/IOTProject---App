@@ -165,7 +165,7 @@
             android:shadowRadius="3"
             android:layout_row="0"
             android:layout_column="1"
-            android:background="@drawable/rounded_button_red"
+            android:background="@drawable/rounded_button_green"
             android:id="@+id/declineReqButton" />
  
     

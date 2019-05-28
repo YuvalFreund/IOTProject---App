@@ -28,7 +28,7 @@ namespace Boris
     public class addCar : Activity
     {
         Button submit;
-        AutoCompleteTextView manufacturer;
+        Spinner manufacturer;
         AutoCompleteTextView model;
         AutoCompleteTextView color;
         AutoCompleteTextView year;
@@ -43,15 +43,17 @@ namespace Boris
 
             submit = FindViewById<Button>(Resource.Id.submitNewCar);
             lisence = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarLP);
-            manufacturer = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarManufacturer);
+            manufacturer = FindViewById<Spinner>(Resource.Id.inputCarManufacturer);
             model = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarModel);
             color = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarColor);
             year = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarProductionYear);
             mode= FindViewById<RadioGroup>(Resource.Id.inputCarProductionYear);
+
             AutoCompleteTextView textCarModel = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarManufacturer);
             string[] models = Resources.GetStringArray(Resource.Array.carModels);
-            var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleDropDownItem1Line, models);
+            var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, models);
             textCarModel.Adapter = adapter;
+
             submit.Click += submitAction;
             AutoCompleteTextView textCarColor = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarColor);
             string[] colors = Resources.GetStringArray(Resource.Array.carColors);
