@@ -49,10 +49,9 @@ namespace Boris
             year = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarProductionYear);
             mode= FindViewById<RadioGroup>(Resource.Id.inputCarProductionYear);
 
-            AutoCompleteTextView textCarModel = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarManufacturer);
             string[] models = Resources.GetStringArray(Resource.Array.carModels);
             var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, models);
-            textCarModel.Adapter = adapter;
+            manufacturer.Adapter = adapter;
 
             submit.Click += submitAction;
             AutoCompleteTextView textCarColor = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarColor);
