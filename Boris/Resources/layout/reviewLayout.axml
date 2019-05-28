@@ -5,44 +5,49 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 	<TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/roundedRec"      
         android:text="How was your ride?"
-        android:layout_gravity="fill_horizontal"
-        android:background="#E6E5E5"
         android:layout_height="70dp"
-        android:layout_marginLeft="3dp"
-        android:padding = "10dp"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="50dp"
         android:id="@+id/openCarLicense"
-        android:layout_row="1"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginRight="0.0dp" />
+        android:textSize="30dp"
+        android:textStyle="bold" />
 	<android.support.design.widget.TextInputEditText
 		android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
 		android:layout_marginTop="100dp"
+        android:textSize="30dp"
 		android:layout_height="wrap_content"
 		android:hint="Enter your review: "
 		android:id="@+id/cont" />
 	<RatingBar
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
 		android:id="@+id/ratingBar"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
+		android:layout_marginTop="20dp"
 		android:numStars="5"
 		android:stepSize="1.0"
 		android:rating="3.0" />
 	<Button
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
 		android:text="SUBMIT"
+        android:textSize="30dp"
         android:textColor="#ffffff"
-            android:textStyle="bold"
-		android:layout_marginTop="20dp"
+        android:layout_gravity="bottom|end"
+        android:textStyle="bold"
+		android:layout_marginTop="30dp"
 		android:layout_width="match_parent"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_button_off"
 		android:layout_height="wrap_content"
 		android:id="@+id/submitReview" />
 
-
+    
 </LinearLayout>

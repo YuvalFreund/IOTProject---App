@@ -26,8 +26,7 @@ namespace Boris
         Button requestCarButton;
         string carId;
         string imgAdress;
-        private ListView nListView;
-      
+        review_result reviewInfo = new review_result();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -42,10 +41,9 @@ namespace Boris
             TextView carModeView = FindViewById<TextView>(Resource.Id.carInfoMode);
             TextView carUserView = FindViewById<TextView>(Resource.Id.carInfoUser);
             TextView carUserEmailView = FindViewById<TextView>(Resource.Id.carInfoUserEmail);
-
+            TextView carInfoReview = FindViewById<TextView>(Resource.Id.carInfoUserReview);
             requestCarButton = FindViewById<Button>(Resource.Id.requestCarButton);
             requestCarButton.Click += requestCar;
-
 
             carInfo_result info = new carInfo_result();
             info.get_from_cloud("https://carshareserver.azurewebsites.net/api/getCarDetails?vehicle_id=" + carId);
@@ -116,12 +114,34 @@ namespace Boris
             {
                 FindViewById<RelativeLayout>(Resource.Id.loadingPanel).Visibility = ViewStates.Gone;
             }
+            string reviewee = carOwner.id;
+            string user_id = Preferences.Get("user_id", "");
+            string login_hash= Preferences.Get("login_hash", "");
+            string address = "https://carshareserver.azurewebsites.net/api/getReviews?reviewee_id=" + reviewee + "&login_hash=" + login_hash + "&user_id=" + user_id;
+            Console.WriteLine(address);
+            /* reviewInfo.get_from_cloud(address);
+             List<revData> reviews = reviewInfo.getReviews();
+             double sum = 0, count = 0;
+             foreach(var rev in reviews)
+             {
 
+                 sum += rev.rate;
+                 count++;
+             }
+             double rank = sum / count;
+             if (rank == 0)
+             {
+                 carInfoReview.Text = "N/A";
+             }
+             else
+             {
+                 carInfoReview.Text = rank.ToString();
+             }*/
+            carInfoReview.Text = "4";
         }
         void requestCar(object sender, EventArgs eventArgs)
         {
-            
-            
+           
             string login_hash= Preferences.Get("login_hash", "1");
             String user_id = Preferences.Get("user_id", "0");
 

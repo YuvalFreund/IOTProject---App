@@ -80,6 +80,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="review.cs" />
+    <Compile Include="reviewResult.cs" />
     <Compile Include="signinActivity.cs" />
     <Compile Include="user.cs" />
   </ItemGroup>
@@ -281,6 +282,18 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\rounded_button_off.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\roundedRec.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\roundTop.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\roundBottom.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\rounded_button_red.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <Content Include="Resources\drawable\shadow_rect.xml">

@@ -56,6 +56,7 @@ namespace Boris
             timer.Interval = 1000;
             timer.Elapsed += OnTimedEvent;
             timer.Start();
+            timer.Enabled = true;
             totalTime = FindViewById<TextView>(Resource.Id.totalTimeView);
             totalCost = FindViewById<TextView>(Resource.Id.totalCostView);
             totalTimeVal = 0;
@@ -73,16 +74,20 @@ namespace Boris
         private void OnTimedEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
             totalTimeVal++;
-            totalCostVal += 0.15;
+            totalCostVal += 0.05;
             if (totalTimeVal < 600){
                 string minuets = "0" + totalTimeVal / 60 + ":";
-                string seconds = "0" + totalTimeVal % 60;
+                string seconds = (totalTimeVal % 60).ToString();
+                if (totalTimeVal % 60 < 10) {
+                    seconds = "0" + totalTimeVal % 60;
+                }
                 totalTime.Text = minuets+seconds;
            }
             else{
-                totalTime.Text = totalTimeVal / 60  + ":" + totalTimeVal % 60;
+                totalTime.Text = totalTimeVal / 60 + ":" + totalTimeVal % 60;
             }
-            totalCost.Text = totalCostVal.ToString();
+            totalCost.Text = totalCostVal.ToString("0.00") + "₪";
+       
         }
 
         public void OnMapReady(GoogleMap googleMap)
