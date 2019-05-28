@@ -3522,8 +3522,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C0011
 			public const int action_mode_close_button = 2131492881;
 			
-			// aapt resource value: 0x7F020072
-			public const int action_settings = 2130837618;
+			// aapt resource value: 0x7F020074
+			public const int action_settings = 2130837620;
 			
 			// aapt resource value: 0x7F0C0004
 			public const int action_text = 2131492868;
@@ -3534,14 +3534,14 @@ namespace Boris
 			// aapt resource value: 0x7F0C0015
 			public const int add = 2131492885;
 			
-			// aapt resource value: 0x7F020052
-			public const int addCarButton = 2130837586;
+			// aapt resource value: 0x7F020054
+			public const int addCarButton = 2130837588;
 			
-			// aapt resource value: 0x7F020219
-			public const int adjust_height = 2130838041;
+			// aapt resource value: 0x7F020221
+			public const int adjust_height = 2130838049;
 			
-			// aapt resource value: 0x7F020218
-			public const int adjust_width = 2130838040;
+			// aapt resource value: 0x7F020220
+			public const int adjust_width = 2130838048;
 			
 			// aapt resource value: 0x1
 			public const int ad_container = 1;
@@ -3570,17 +3570,17 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int android_pay_light_with_border = 1;
 			
-			// aapt resource value: 0x7F020030
-			public const int approvalText = 2130837552;
+			// aapt resource value: 0x7F020031
+			public const int approvalText = 2130837553;
 			
-			// aapt resource value: 0x7F020039
-			public const int approveReqButton = 2130837561;
+			// aapt resource value: 0x7F020040
+			public const int approveReqButton = 2130837568;
 			
-			// aapt resource value: 0x7F020225
-			public const int APP_NAME = 2130838053;
+			// aapt resource value: 0x7F020227
+			public const int APP_NAME = 2130838055;
 			
-			// aapt resource value: 0x7F020217
-			public const int app_name = 2130838039;
+			// aapt resource value: 0x7F020219
+			public const int app_name = 2130838041;
 			
 			// aapt resource value: 0x7F0C0006
 			public const int async = 2131492870;
@@ -3609,8 +3609,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C001A
 			public const int bottom = 2131492890;
 			
-			// aapt resource value: 0x7F020049
-			public const int btn_login1 = 2130837577;
+			// aapt resource value: 0x7F020051
+			public const int btn_login1 = 2130837585;
 			
 			// aapt resource value: 0x1
 			public const int button = 1;
@@ -3648,35 +3648,35 @@ namespace Boris
 			// aapt resource value: 0x7F0C001C
 			public const int cancel_action = 2131492892;
 			
-			// aapt resource value: 0x7F020016
-			public const int carInfoImg = 2130837526;
-			
-			// aapt resource value: 0x7F020021
-			public const int carInfoLicense = 2130837537;
-			
-			// aapt resource value: 0x7F020019
-			public const int carInfoMode = 2130837529;
-			
 			// aapt resource value: 0x7F020017
-			public const int carInfoModel = 2130837527;
+			public const int carInfoImg = 2130837527;
+			
+			// aapt resource value: 0x7F020022
+			public const int carInfoLicense = 2130837538;
 			
 			// aapt resource value: 0x7F020020
-			public const int carInfoProduction = 2130837536;
+			public const int carInfoMode = 2130837536;
 			
-			// aapt resource value: 0x7F020025
-			public const int carInfoUser = 2130837541;
+			// aapt resource value: 0x7F020018
+			public const int carInfoModel = 2130837528;
+			
+			// aapt resource value: 0x7F020021
+			public const int carInfoProduction = 2130837537;
 			
 			// aapt resource value: 0x7F020026
-			public const int carInfoUserEmail = 2130837542;
+			public const int carInfoUser = 2130837542;
 			
 			// aapt resource value: 0x7F020027
-			public const int carInfoUserReview = 2130837543;
+			public const int carInfoUserEmail = 2130837543;
+			
+			// aapt resource value: 0x7F020028
+			public const int carInfoUserReview = 2130837544;
+			
+			// aapt resource value: 0x7F020043
+			public const int carListItemButton = 2130837571;
 			
 			// aapt resource value: 0x7F020042
-			public const int carListItemButton = 2130837570;
-			
-			// aapt resource value: 0x7F020041
-			public const int carListItemText = 2130837569;
+			public const int carListItemText = 2130837570;
 			
 			// aapt resource value: 0x1
 			public const int cast_button_type_closed_caption = 1;
@@ -3729,8 +3729,8 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int classic = 1;
 			
-			// aapt resource value: 0x7F020060
-			public const int cont = 2130837600;
+			// aapt resource value: 0x7F020061
+			public const int cont = 2130837601;
 			
 			// aapt resource value: 0x1
 			public const int contact = 1;
@@ -3762,14 +3762,14 @@ namespace Boris
 			// aapt resource value: 0x7F0C0024
 			public const int customPanel = 2131492900;
 			
-			// aapt resource value: 0x7F020223
-			public const int dark = 2130838051;
+			// aapt resource value: 0x7F020225
+			public const int dark = 2130838053;
 			
 			// aapt resource value: 0x1
 			public const int date = 1;
 			
-			// aapt resource value: 0x7F020040
-			public const int declineReqButton = 2130837568;
+			// aapt resource value: 0x7F020041
+			public const int declineReqButton = 2130837569;
 			
 			// aapt resource value: 0x7F0C0025
 			public const int decor_content_parent = 2131492901;
@@ -3798,8 +3798,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C002B
 			public const int design_navigation_view = 2131492907;
 			
-			// aapt resource value: 0x7F020031
-			public const int detailsButton = 2130837553;
+			// aapt resource value: 0x7F020032
+			public const int detailsButton = 2130837554;
 			
 			// aapt resource value: 0x1
 			public const int donate_with = 1;
@@ -3816,8 +3816,8 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int email = 1;
 			
-			// aapt resource value: 0x7F020055
-			public const int email1 = 2130837589;
+			// aapt resource value: 0x7F020057
+			public const int email1 = 2130837591;
 			
 			// aapt resource value: 0x7F0C002D
 			public const int end = 2131492909;
@@ -3837,14 +3837,14 @@ namespace Boris
 			// aapt resource value: 0x7F0C002F
 			public const int expand_activities_button = 2131492911;
 			
-			// aapt resource value: 0x7F020014
-			public const int fab = 2130837524;
+			// aapt resource value: 0x7F020015
+			public const int fab = 2130837525;
 			
 			// aapt resource value: 0x7F0C0031
 			public const int fill = 2131492913;
 			
-			// aapt resource value: 0x7F020046
-			public const int finishDriveButton = 2130837574;
+			// aapt resource value: 0x7F020047
+			public const int finishDriveButton = 2130837575;
 			
 			// aapt resource value: 0x7F0C0032
 			public const int @fixed = 2131492914;
@@ -3852,8 +3852,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C0009
 			public const int forever = 2131492873;
 			
-			// aapt resource value: 0x7F020013
-			public const int fragmentContainer = 2130837523;
+			// aapt resource value: 0x7F020014
+			public const int fragmentContainer = 2130837524;
 			
 			// aapt resource value: 0x7F0C0034
 			public const int ghost_view = 2131492916;
@@ -3870,29 +3870,29 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int grayscale = 1;
 			
-			// aapt resource value: 0x7F020018
-			public const int gridLayout1 = 2130837528;
+			// aapt resource value: 0x7F020019
+			public const int gridLayout1 = 2130837529;
 			
-			// aapt resource value: 0x7F020022
-			public const int gridLayout3 = 2130837538;
+			// aapt resource value: 0x7F020023
+			public const int gridLayout3 = 2130837539;
 			
-			// aapt resource value: 0x7F020024
-			public const int gridLayout4 = 2130837540;
-			
-			// aapt resource value: 0x7F020036
-			public const int handelReqLicense = 2130837558;
-			
-			// aapt resource value: 0x7F020035
-			public const int handelReqLoadingPanel = 2130837557;
-			
-			// aapt resource value: 0x7F020038
-			public const int handleReqUserEmail = 2130837560;
+			// aapt resource value: 0x7F020025
+			public const int gridLayout4 = 2130837541;
 			
 			// aapt resource value: 0x7F020037
-			public const int handleReqUserName = 2130837559;
+			public const int handelReqLicense = 2130837559;
 			
-			// aapt resource value: 0x7F020034
-			public const int handleRequstImg = 2130837556;
+			// aapt resource value: 0x7F020036
+			public const int handelReqLoadingPanel = 2130837558;
+			
+			// aapt resource value: 0x7F020039
+			public const int handleReqUserEmail = 2130837561;
+			
+			// aapt resource value: 0x7F020038
+			public const int handleReqUserName = 2130837560;
+			
+			// aapt resource value: 0x7F020035
+			public const int handleRequstImg = 2130837557;
 			
 			// aapt resource value: 0x1
 			public const int holo_dark = 1;
@@ -3915,8 +3915,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C000B
 			public const int icon_group = 2131492875;
 			
-			// aapt resource value: 0x7F020222
-			public const int icon_only = 2130838050;
+			// aapt resource value: 0x7F020224
+			public const int icon_only = 2130838052;
 			
 			// aapt resource value: 0x1
 			public const int icon_uri = 1;
@@ -3927,8 +3927,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C0038
 			public const int image = 2131492920;
 			
-			// aapt resource value: 0x7F020053
-			public const int imageView1 = 2130837587;
+			// aapt resource value: 0x7F020055
+			public const int imageView1 = 2130837589;
 			
 			// aapt resource value: 0x1
 			public const int index_entity_types = 1;
@@ -3951,11 +3951,11 @@ namespace Boris
 			// aapt resource value: 0x7F020006
 			public const int inputCarProductionYear = 2130837510;
 			
-			// aapt resource value: 0x7F020047
-			public const int input_email = 2130837575;
+			// aapt resource value: 0x7F020049
+			public const int input_email = 2130837577;
 			
-			// aapt resource value: 0x7F020048
-			public const int input_password = 2130837576;
+			// aapt resource value: 0x7F020050
+			public const int input_password = 2130837584;
 			
 			// aapt resource value: 0x1
 			public const int instant_message = 1;
@@ -4002,8 +4002,8 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int license_list = 1;
 			
-			// aapt resource value: 0x7F020224
-			public const int light = 2130838052;
+			// aapt resource value: 0x7F020226
+			public const int light = 2130838054;
 			
 			// aapt resource value: 0x7F0C000E
 			public const int line1 = 2131492878;
@@ -4011,8 +4011,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C000F
 			public const int line3 = 2131492879;
 			
-			// aapt resource value: 0x7F020050
-			public const int link_signup = 2130837584;
+			// aapt resource value: 0x7F020052
+			public const int link_signup = 2130837586;
 			
 			// aapt resource value: 0x7F0C0040
 			public const int listMode = 2131492928;
@@ -4020,8 +4020,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C0041
 			public const int list_item = 2131492929;
 			
-			// aapt resource value: 0x7F020045
-			public const int liveMapContainer = 2130837573;
+			// aapt resource value: 0x7F020046
+			public const int liveMapContainer = 2130837574;
 			
 			// aapt resource value: 0x1
 			public const int live_stream_indicator = 1;
@@ -4029,8 +4029,8 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int live_stream_seek_bar = 1;
 			
-			// aapt resource value: 0x7F020015
-			public const int loadingPanel = 2130837525;
+			// aapt resource value: 0x7F020016
+			public const int loadingPanel = 2130837526;
 			
 			// aapt resource value: 0x1
 			public const int loading_indicator = 1;
@@ -4038,8 +4038,8 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int logo_only = 1;
 			
-			// aapt resource value: 0x7F020051
-			public const int mapContainer = 2130837585;
+			// aapt resource value: 0x7F020053
+			public const int mapContainer = 2130837587;
 			
 			// aapt resource value: 0x7F0C0042
 			public const int masked = 2131492930;
@@ -4068,17 +4068,17 @@ namespace Boris
 			// aapt resource value: 0x7F0C0047
 			public const int navigation_header_container = 2131492935;
 			
-			// aapt resource value: 0x7F020070
-			public const int nav_history = 2130837616;
+			// aapt resource value: 0x7F020072
+			public const int nav_history = 2130837618;
 			
-			// aapt resource value: 0x7F020068
-			public const int nav_home = 2130837608;
+			// aapt resource value: 0x7F020070
+			public const int nav_home = 2130837616;
+			
+			// aapt resource value: 0x7F020073
+			public const int nav_logout = 2130837619;
 			
 			// aapt resource value: 0x7F020071
-			public const int nav_logout = 2130837617;
-			
-			// aapt resource value: 0x7F020069
-			public const int nav_my_cars = 2130837609;
+			public const int nav_my_cars = 2130837617;
 			
 			// aapt resource value: 0x7F020003
 			public const int nav_view = 2130837507;
@@ -4107,20 +4107,20 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int omnibox_url_section = 1;
 			
-			// aapt resource value: 0x7F020033
-			public const int openCarButton = 2130837555;
-			
-			// aapt resource value: 0x7F020057
-			public const int openCarImg = 2130837591;
-			
-			// aapt resource value: 0x7F020058
-			public const int openCarLicense = 2130837592;
-			
-			// aapt resource value: 0x7F020056
-			public const int openCarloadingPanel = 2130837590;
+			// aapt resource value: 0x7F020034
+			public const int openCarButton = 2130837556;
 			
 			// aapt resource value: 0x7F020059
-			public const int openCarWaitPanel = 2130837593;
+			public const int openCarImg = 2130837593;
+			
+			// aapt resource value: 0x7F020048
+			public const int openCarLicense = 2130837576;
+			
+			// aapt resource value: 0x7F020058
+			public const int openCarloadingPanel = 2130837592;
+			
+			// aapt resource value: 0x7F020060
+			public const int openCarWaitPanel = 2130837600;
 			
 			// aapt resource value: 0x7F0C004D
 			public const int parallax = 2131492941;
@@ -4131,8 +4131,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C004F
 			public const int parent_matrix = 2131492943;
 			
-			// aapt resource value: 0x7F020029
-			public const int pendingText = 2130837545;
+			// aapt resource value: 0x7F020030
+			public const int pendingText = 2130837552;
 			
 			// aapt resource value: 0x7F0C0050
 			public const int pin = 2131492944;
@@ -4179,17 +4179,20 @@ namespace Boris
 			// aapt resource value: 0x7F0C0053
 			public const int radio = 2131492947;
 			
-			// aapt resource value: 0x7F020009
-			public const int radioAutomatic = 2130837513;
-			
 			// aapt resource value: 0x7F020010
-			public const int radioManual = 2130837520;
+			public const int radioAutomatic = 2130837520;
 			
-			// aapt resource value: 0x7F020061
-			public const int ratingBar = 2130837601;
+			// aapt resource value: 0x7F020011
+			public const int radioManual = 2130837521;
 			
-			// aapt resource value: 0x7F020028
-			public const int requestCarButton = 2130837544;
+			// aapt resource value: 0x7F020009
+			public const int radioMode = 2130837513;
+			
+			// aapt resource value: 0x7F020062
+			public const int ratingBar = 2130837602;
+			
+			// aapt resource value: 0x7F020029
+			public const int requestCarButton = 2130837545;
 			
 			// aapt resource value: 0x1
 			public const int rfc822 = 1;
@@ -4278,20 +4281,20 @@ namespace Boris
 			// aapt resource value: 0x7F0C006A
 			public const int shortcut = 2131492970;
 			
-			// aapt resource value: 0x7F020067
-			public const int signInButton = 2130837607;
-			
-			// aapt resource value: 0x7F020063
-			public const int signInEmail = 2130837603;
-			
-			// aapt resource value: 0x7F020066
-			public const int signInLisence = 2130837606;
-			
-			// aapt resource value: 0x7F020065
-			public const int signInPass = 2130837605;
+			// aapt resource value: 0x7F020068
+			public const int signInButton = 2130837608;
 			
 			// aapt resource value: 0x7F020064
-			public const int signInRepeatEmail = 2130837604;
+			public const int signInEmail = 2130837604;
+			
+			// aapt resource value: 0x7F020067
+			public const int signInLisence = 2130837607;
+			
+			// aapt resource value: 0x7F020066
+			public const int signInPass = 2130837606;
+			
+			// aapt resource value: 0x7F020065
+			public const int signInRepeatEmail = 2130837605;
 			
 			// aapt resource value: 0x1
 			public const int slide = 1;
@@ -4308,6 +4311,9 @@ namespace Boris
 			// aapt resource value: 0x7F0C006E
 			public const int spacer = 2131492974;
 			
+			// aapt resource value: 0x7F020069
+			public const int spinner_dropdown = 2130837609;
+			
 			// aapt resource value: 0x7F0C006F
 			public const int split_action_bar = 2131492975;
 			
@@ -4320,8 +4326,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C0072
 			public const int src_over = 2131492978;
 			
-			// aapt resource value: 0x7F020220
-			public const int standard = 2130838048;
+			// aapt resource value: 0x7F020222
+			public const int standard = 2130838050;
 			
 			// aapt resource value: 0x7F0C0073
 			public const int start = 2131492979;
@@ -4341,11 +4347,11 @@ namespace Boris
 			// aapt resource value: 0x7F0C0075
 			public const int submenuarrow = 2131492981;
 			
-			// aapt resource value: 0x7F020011
-			public const int submitNewCar = 2130837521;
+			// aapt resource value: 0x7F020012
+			public const int submitNewCar = 2130837522;
 			
-			// aapt resource value: 0x7F020062
-			public const int submitReview = 2130837602;
+			// aapt resource value: 0x7F020063
+			public const int submitReview = 2130837603;
 			
 			// aapt resource value: 0x7F0C0076
 			public const int submit_area = 2131492982;
@@ -4404,8 +4410,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C0019
 			public const int time = 2131492889;
 			
-			// aapt resource value: 0x7F020032
-			public const int timerText = 2130837554;
+			// aapt resource value: 0x7F020033
+			public const int timerText = 2130837555;
 			
 			// aapt resource value: 0x7F0C001A
 			public const int title = 2131492890;
@@ -4419,8 +4425,8 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int title_view = 1;
 			
-			// aapt resource value: 0x7F020012
-			public const int toolbar = 2130837522;
+			// aapt resource value: 0x7F020013
+			public const int toolbar = 2130837523;
 			
 			// aapt resource value: 0x7F0C0084
 			public const int top = 2131492996;
@@ -4428,11 +4434,11 @@ namespace Boris
 			// aapt resource value: 0x7F0C0085
 			public const int topPanel = 2131492997;
 			
-			// aapt resource value: 0x7F020044
-			public const int totalCostView = 2130837572;
+			// aapt resource value: 0x7F020045
+			public const int totalCostView = 2130837573;
 			
-			// aapt resource value: 0x7F020043
-			public const int totalTimeView = 2130837571;
+			// aapt resource value: 0x7F020044
+			public const int totalTimeView = 2130837572;
 			
 			// aapt resource value: 0x7F0C0086
 			public const int touch_outside = 2131492998;
@@ -4461,11 +4467,11 @@ namespace Boris
 			// aapt resource value: 0x1
 			public const int url = 1;
 			
-			// aapt resource value: 0x7F020023
-			public const int userImg = 2130837539;
+			// aapt resource value: 0x7F020024
+			public const int userImg = 2130837540;
 			
-			// aapt resource value: 0x7F020054
-			public const int userName1 = 2130837588;
+			// aapt resource value: 0x7F020056
+			public const int userName1 = 2130837590;
 			
 			// aapt resource value: 0x7F0C008E
 			public const int view_offset_helper = 2131493006;
@@ -4473,8 +4479,8 @@ namespace Boris
 			// aapt resource value: 0x7F0C008F
 			public const int visible = 2131493007;
 			
-			// aapt resource value: 0x7F020221
-			public const int wide = 2130838049;
+			// aapt resource value: 0x7F020223
+			public const int wide = 2130838051;
 			
 			// aapt resource value: 0x7F0C0090
 			public const int wrap_content = 2131493008;
@@ -4811,6 +4817,9 @@ namespace Boris
 			// aapt resource value: 0x7F030019
 			public const int signInLayout = 2130903065;
 			
+			// aapt resource value: 0x7F030020
+			public const int spinner_item = 2130903072;
+			
 			// aapt resource value: 0x7F0F003B
 			public const int support_simple_spinner_dropdown_item = 2131689531;
 			
@@ -4989,6 +4998,9 @@ namespace Boris
 			// aapt resource value: 0x7F15001F
 			public const int bottom_sheet_behavior = 2132082719;
 			
+			// aapt resource value: 0x7F080006
+			public const int car_prompt = 2131230726;
+			
 			// aapt resource value: 0x1
 			public const int cast_ad_label = 1;
 			
@@ -5112,59 +5124,59 @@ namespace Boris
 			// aapt resource value: 0x7F150020
 			public const int character_counter_pattern = 2132082720;
 			
-			// aapt resource value: 0x7F080046
-			public const int common_google_play_services_enable_button = 2131230790;
-			
 			// aapt resource value: 0x7F080047
-			public const int common_google_play_services_enable_text = 2131230791;
+			public const int common_google_play_services_enable_button = 2131230791;
 			
 			// aapt resource value: 0x7F080048
-			public const int common_google_play_services_enable_title = 2131230792;
+			public const int common_google_play_services_enable_text = 2131230792;
 			
 			// aapt resource value: 0x7F080049
-			public const int common_google_play_services_install_button = 2131230793;
+			public const int common_google_play_services_enable_title = 2131230793;
 			
 			// aapt resource value: 0x7F080050
-			public const int common_google_play_services_install_text = 2131230800;
+			public const int common_google_play_services_install_button = 2131230800;
 			
 			// aapt resource value: 0x7F080051
-			public const int common_google_play_services_install_title = 2131230801;
+			public const int common_google_play_services_install_text = 2131230801;
 			
 			// aapt resource value: 0x7F080052
-			public const int common_google_play_services_notification_ticker = 2131230802;
+			public const int common_google_play_services_install_title = 2131230802;
+			
+			// aapt resource value: 0x7F080053
+			public const int common_google_play_services_notification_ticker = 2131230803;
 			
 			// aapt resource value: 0x1
 			public const int common_google_play_services_unknown_issue = 1;
 			
-			// aapt resource value: 0x7F080053
-			public const int common_google_play_services_unsupported_text = 2131230803;
-			
 			// aapt resource value: 0x7F080054
-			public const int common_google_play_services_update_button = 2131230804;
+			public const int common_google_play_services_unsupported_text = 2131230804;
 			
 			// aapt resource value: 0x7F080055
-			public const int common_google_play_services_update_text = 2131230805;
+			public const int common_google_play_services_update_button = 2131230805;
 			
 			// aapt resource value: 0x7F080056
-			public const int common_google_play_services_update_title = 2131230806;
+			public const int common_google_play_services_update_text = 2131230806;
 			
 			// aapt resource value: 0x7F080057
-			public const int common_google_play_services_updating_text = 2131230807;
+			public const int common_google_play_services_update_title = 2131230807;
 			
 			// aapt resource value: 0x7F080058
-			public const int common_google_play_services_wear_update_text = 2131230808;
+			public const int common_google_play_services_updating_text = 2131230808;
 			
 			// aapt resource value: 0x7F080059
-			public const int common_open_on_phone = 2131230809;
+			public const int common_google_play_services_wear_update_text = 2131230809;
 			
 			// aapt resource value: 0x7F080060
-			public const int common_signin_button_text = 2131230816;
+			public const int common_open_on_phone = 2131230816;
 			
 			// aapt resource value: 0x7F080061
-			public const int common_signin_button_text_long = 2131230817;
+			public const int common_signin_button_text = 2131230817;
 			
-			// aapt resource value: 0x7F080045
-			public const int fcm_fallback_notification_channel_label = 2131230789;
+			// aapt resource value: 0x7F080062
+			public const int common_signin_button_text_long = 2131230818;
+			
+			// aapt resource value: 0x7F080046
+			public const int fcm_fallback_notification_channel_label = 2131230790;
 			
 			// aapt resource value: 0x1
 			public const int gcm_fallback_notification_channel_label = 1;
@@ -5278,17 +5290,17 @@ namespace Boris
 			// aapt resource value: 0x7F100002
 			public const int AppTheme = 2131755010;
 			
-			// aapt resource value: 0x7F100004
-			public const int AppTheme_AppBarOverlay = 2131755012;
-			
-			// aapt resource value: 0x7F100003
-			public const int AppTheme_NoActionBar = 2131755011;
-			
 			// aapt resource value: 0x7F100005
-			public const int AppTheme_PopupOverlay = 2131755013;
+			public const int AppTheme_AppBarOverlay = 2131755013;
+			
+			// aapt resource value: 0x7F100004
+			public const int AppTheme_NoActionBar = 2131755012;
 			
 			// aapt resource value: 0x7F100006
-			public const int AppTheme_RoundedCornerMaterialButton = 2131755014;
+			public const int AppTheme_PopupOverlay = 2131755014;
+			
+			// aapt resource value: 0x7F100007
+			public const int AppTheme_RoundedCornerMaterialButton = 2131755015;
 			
 			// aapt resource value: 0x7F160007
 			public const int Base_AlertDialog_AppCompat = 2132148231;
@@ -5790,6 +5802,9 @@ namespace Boris
 			
 			// aapt resource value: 0x1
 			public const int CustomCastTheme = 1;
+			
+			// aapt resource value: 0x7F100003
+			public const int MySpinnerLook = 2131755011;
 			
 			// aapt resource value: 0x7F1600AA
 			public const int Platform_AppCompat = 2132148394;

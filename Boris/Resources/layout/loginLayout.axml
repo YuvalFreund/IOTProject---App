@@ -3,16 +3,32 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true">
-
-    <LinearLayout
+   
+   <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp">
+        
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/roundedRec"      
+        android:text="Welcome to CarSharing!"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:id="@+id/openCarLicense"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="56dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
-
-       
         <!-- Email Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -45,16 +61,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
-            android:padding="12dp"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/rounded_button_green"
             android:text="Login"/>
 
         <Button android:id="@+id/link_signup"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/rounded_button_green"
             android:text="No account yet? Create one"
             android:gravity="center"
-            android:textSize="16dip"/>
-
+            />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

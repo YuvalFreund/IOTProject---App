@@ -29,6 +29,7 @@ namespace Boris
     {
         Button submit;
         Spinner manufacturer;
+        string make; 
         AutoCompleteTextView model;
         AutoCompleteTextView color;
         AutoCompleteTextView year;
@@ -47,8 +48,8 @@ namespace Boris
             model = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarModel);
             color = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarColor);
             year = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarProductionYear);
-            mode= FindViewById<RadioGroup>(Resource.Id.inputCarProductionYear);
-
+            mode= FindViewById<RadioGroup>(Resource.Id.radioMode);
+            manufacturer.ItemSelected += setString;
             string[] models = Resources.GetStringArray(Resource.Array.carModels);
             var adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleSpinnerItem, models);
             manufacturer.Adapter = adapter;
@@ -56,19 +57,26 @@ namespace Boris
             submit.Click += submitAction;
             AutoCompleteTextView textCarColor = FindViewById<AutoCompleteTextView>(Resource.Id.inputCarColor);
             string[] colors = Resources.GetStringArray(Resource.Array.carColors);
-            var adapter2 = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleDropDownItem1Line, colors);
+            var adapter2 = new ArrayAdapter<String>(this, Resource.Layout.spinner_item, colors);
             textCarColor.Adapter = adapter2;
+        }
+
+        private void setString(object sender, AdapterView.ItemSelectedEventArgs e)
+        {
+            make = manufacturer.GetItemAtPosition(e.Position).ToString();
         }
 
         private void submitAction(object sender, EventArgs e)
         {
+
             string mmodel = model.Text;
-            string mmanufacturer = manufacturer.Text;
+            string mmanufacturer = make;
             string mcolor = color.Text;
+            string mmode ="1";
             string myear = year.Text;
             string mlisence = lisence.Text;
             string login_hash = Preferences.Get("login_hash", "");
-            String address = "https://carshareserver.azurewebsites.net/api/addCar?manufacturer=" + mmanufacturer + "&Lisence=" + mlisence + "&color=" + mcolor + "&model=" + mmodel + "&year=" + myear + "&login_hash=" + login_hash;
+            String address = "https://carshareserver.azurewebsites.net/api/addCar?manufacturer=" + mmanufacturer + "&Mode=" + mmode + "&Lisence=" + mlisence + "&color=" + mcolor + "&model=" + mmodel + "&year=" + myear + "&login_hash=" + login_hash;
             Console.WriteLine(address);
             HttpClient client = new HttpClient();
             var responseString = client.GetStringAsync(address);

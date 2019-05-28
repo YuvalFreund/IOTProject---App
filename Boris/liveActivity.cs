@@ -49,8 +49,8 @@ namespace Boris
             finishDrive.Click += finishAction;
             FragmentManager.FindFragmentById<MapFragment>(Resource.Id.liveMapContainer).GetMapAsync(this);
             InitializeLocationManager();
-           // Location location = locationManager.GetLastKnownLocation(locationProvider);
-         //   Log.Debug(TAG, "new location: " + location.Latitude.ToString() + "," + location.Longitude.ToString());
+            currentLocation = locationManager.GetLastKnownLocation(locationProvider);
+            Log.Debug(TAG, "new location: " + currentLocation.Latitude.ToString() + "," + currentLocation.Longitude.ToString());
             //sedLocationProviderClient = LocationServices.GetFusedLocationProviderClient(this);
             timer =  new Timer();
             timer.Interval = 1000;
@@ -100,6 +100,12 @@ namespace Boris
             CameraPosition cameraPosition = builder.Build();
             CameraUpdate cameraUpdate = CameraUpdateFactory.NewCameraPosition(cameraPosition);
             mMap.MoveCamera(cameraUpdate);
+            LatLng latlng = new LatLng(currentLocation.Latitude, currentLocation.Longitude);
+            Log.Debug(TAG, "new location: " + currentLocation.Latitude.ToString() + "," + currentLocation.Longitude.ToString());
+            MarkerOptions mo = new MarkerOptions();
+            mo.SetPosition(latlng);
+            mMap.AddMarker(mo);
+
         }
 
         public void OnLocationChanged(Location location)

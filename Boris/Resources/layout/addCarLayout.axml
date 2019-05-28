@@ -16,7 +16,18 @@
         <Spinner
             android:id="@+id/inputCarManufacturer"
             android:layout_width="fill_parent"
-            android:prompt="Choose your car make: "
+             android:layout_margin="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:dropDownWidth="300dp"
+            android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+            android:paddingRight="14dp"
+            android:popupBackground="@android:color/white"
+            android:popupElevation="3dp"
+            android:textSize="24sp"
+            style="@style/MySpinnerLook"
+            android:prompt="@string/car_prompt"
             android:layout_height="wrap_content" />
         <AutoCompleteTextView
             android:id="@+id/inputCarModel"
@@ -42,6 +53,7 @@
             android:layout_height="wrap_content" />
         <RadioGroup
             android:layout_width="fill_parent"
+              android:id="@+id/radioMode"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <RadioButton
