@@ -54,7 +54,6 @@ namespace Boris
             Preferences.Set("responseStauts", "");
             Preferences.Set("displaySetting", 0);
 
-
             const string TAG = "MyFirebaseIIDService";
             var refreshedToken = FirebaseInstanceId.Instance.Token;
             Log.Debug(TAG, "Refreshed token: " + refreshedToken);

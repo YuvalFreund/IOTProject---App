@@ -10,21 +10,27 @@ using Newtonsoft.Json;
     public string content;
     public string reg_time;
 }
+struct all_res 
+{
+    public int status;
+    public List<revData> all_reviews;
+    public double avg_rate;
+}
 namespace Boris
 {
 
     class review_result
     {
-        public List<revData> all_reviews;
+        all_res total_res;
         private static HttpClient client = new HttpClient();
         public void get_from_cloud(String address)
         {
             var responseString = client.GetStringAsync(address);
-            all_reviews = JsonConvert.DeserializeObject<List<revData>>(responseString.Result);
+            total_res = JsonConvert.DeserializeObject<all_res>(responseString.Result);
         }
-        public List<revData> getReviews()
+        public all_res getReviews()
         {
-            return all_reviews;
+            return total_res;
         }
     }
 }

@@ -16,16 +16,16 @@ using Android.Support.V7.App;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-
-
+using ILocationListener = Android.Locations.ILocationListener;
 
 namespace Boris
 {
     [Activity(Label = "Active Drive")]
-    public class liveActivity : AppCompatActivity, IOnMapReadyCallback 
+    public class liveActivity : AppCompatActivity, IOnMapReadyCallback , ILocationListener
     {
         private System.Timers.Timer timer;
-        private int countSeconds;
+        private System.Timers.Timer timer2;
+
         Location currentLocation;
         LocationManager locationManager;
         string locationProvider;
@@ -34,7 +34,6 @@ namespace Boris
         TextView totalCost;
         int totalTimeVal;
         double totalCostVal;
-        FusedLocationProviderClient fusedLocationProviderClient;
         Button finishDrive;
         public string TAG
         {
@@ -49,20 +48,39 @@ namespace Boris
             finishDrive.Click += finishAction;
             FragmentManager.FindFragmentById<MapFragment>(Resource.Id.liveMapContainer).GetMapAsync(this);
             InitializeLocationManager();
-            currentLocation = locationManager.GetLastKnownLocation(locationProvider);
-            Log.Debug(TAG, "new location: " + currentLocation.Latitude.ToString() + "," + currentLocation.Longitude.ToString());
+          //  currentLocation = locationManager.GetLastKnownLocation(locationProvider);
+          //  Log.Debug(TAG, "new location: " + currentLocation.Latitude.ToString() + "," + currentLocation.Longitude.ToString());
             //sedLocationProviderClient = LocationServices.GetFusedLocationProviderClient(this);
             timer =  new Timer();
+            timer2 = new Timer();
             timer.Interval = 1000;
+            timer2.Interval = 5000;
             timer.Elapsed += OnTimedEvent;
             timer.Start();
             timer.Enabled = true;
+            timer2.Elapsed += OnTimedEvent2;
+           // timer2.Start();
+           // timer2.Enabled = true;
             totalTime = FindViewById<TextView>(Resource.Id.totalTimeView);
             totalCost = FindViewById<TextView>(Resource.Id.totalCostView);
             totalTimeVal = 0;
             totalCostVal = 0;
             finishDrive = FindViewById<Button>(Resource.Id.finishDriveButton);
          }
+        protected override void OnResume()
+        {
+            base.OnResume();
+            locationManager.RequestLocationUpdates(locationProvider, 0, 0, this);
+        }
+        protected override void OnPause()
+        {
+            base.OnPause();
+            locationManager.RemoveUpdates(this);
+        }
+        private void OnTimedEvent2(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            //locationManager.RequestLocationUpdates(locationProvider, 0, 0, this);
+        }
 
         private void finishAction(object sender, EventArgs e)
         {
@@ -96,15 +114,15 @@ namespace Boris
             LatLng Israel = new LatLng(31.916312, 34.84811);
             CameraPosition.Builder builder = CameraPosition.InvokeBuilder();
             builder.Target(Israel);
-            builder.Zoom(6);
+            builder.Zoom(7);
             CameraPosition cameraPosition = builder.Build();
             CameraUpdate cameraUpdate = CameraUpdateFactory.NewCameraPosition(cameraPosition);
             mMap.MoveCamera(cameraUpdate);
-            LatLng latlng = new LatLng(currentLocation.Latitude, currentLocation.Longitude);
-            Log.Debug(TAG, "new location: " + currentLocation.Latitude.ToString() + "," + currentLocation.Longitude.ToString());
-            MarkerOptions mo = new MarkerOptions();
-            mo.SetPosition(latlng);
-            mMap.AddMarker(mo);
+          //  LatLng latlng = new LatLng(currentLocation.Latitude, currentLocation.Longitude);
+            //Log.Debug(TAG, "new location: " + currentLocation.Latitude.ToString() + "," + currentLocation.Longitude.ToString());
+           // MarkerOptions mo = new MarkerOptions();
+         //   mo.SetPosition(latlng);
+         //   mMap.AddMarker(mo);
 
         }
 
@@ -117,7 +135,7 @@ namespace Boris
                 return;
             }
             LatLng latlng = new LatLng(location.Latitude, location.Longitude);
-            Log.Debug(TAG, "new location: " + location.Latitude.ToString() + "," + location.Longitude.ToString());
+            Log.Debug(TAG, "here location: " + location.Latitude.ToString() + "," + location.Longitude.ToString());
             MarkerOptions mo = new MarkerOptions();
             mo.SetPosition(latlng);
             mMap.AddMarker(mo);

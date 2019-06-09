@@ -119,25 +119,23 @@ namespace Boris
             string login_hash= Preferences.Get("login_hash", "");
             string address = "https://carshareserver.azurewebsites.net/api/getReviews?reviewee_id=" + reviewee + "&login_hash=" + login_hash + "&user_id=" + user_id;
             Console.WriteLine(address);
-            /* reviewInfo.get_from_cloud(address);
-             List<revData> reviews = reviewInfo.getReviews();
-             double sum = 0, count = 0;
-             foreach(var rev in reviews)
-             {
-
-                 sum += rev.rate;
-                 count++;
-             }
-             double rank = sum / count;
-             if (rank == 0)
-             {
-                 carInfoReview.Text = "N/A";
-             }
-             else
-             {
-                 carInfoReview.Text = rank.ToString();
-             }*/
-            carInfoReview.Text = "4";
+            reviewInfo.get_from_cloud(address);
+            //List<revData> reviews = reviewInfo.getReviews().all_reviews;
+            int stauts = reviewInfo.getReviews().status;
+            if (stauts == -1)
+            {
+                carInfoReview.Text = "N/A";
+            }
+            else
+            {
+                if (reviewInfo.getReviews().avg_rate == -1){
+                    carInfoReview.Text = "N/A";
+                }
+                else
+                {
+                    carInfoReview.Text = reviewInfo.getReviews().avg_rate.ToString();
+                }
+            }
         }
         void requestCar(object sender, EventArgs eventArgs)
         {
