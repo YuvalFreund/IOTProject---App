@@ -25,6 +25,7 @@ namespace Boris
     {
         Button requestCarButton;
         string carId;
+        string reviewee;
         string imgAdress;
         review_result reviewInfo = new review_result();
 
@@ -42,9 +43,11 @@ namespace Boris
             TextView carUserView = FindViewById<TextView>(Resource.Id.carInfoUser);
             TextView carUserEmailView = FindViewById<TextView>(Resource.Id.carInfoUserEmail);
             TextView carInfoReview = FindViewById<TextView>(Resource.Id.carInfoUserReview);
+
             requestCarButton = FindViewById<Button>(Resource.Id.requestCarButton);
             requestCarButton.Click += requestCar;
-
+            Button viewReviews = FindViewById<Button>(Resource.Id.carInfoViewReviews);
+            viewReviews.Click += viewFunc;
             carInfo_result info = new carInfo_result();
             info.get_from_cloud("https://carshareserver.azurewebsites.net/api/getCarDetails?vehicle_id=" + carId);
             carTotalInfo totalInfo = info.getInfo();
@@ -105,22 +108,20 @@ namespace Boris
 
                         //Calculate image size
                         double ratio = (double)img1.Height / (double)img1.Width;
-                        FindViewById<RelativeLayout>(Resource.Id.loadingPanel).Visibility = ViewStates.Gone;
+                        FindViewById<RelativeLayout>(Resource.Id.carInfoLoadingPanel).Visibility = ViewStates.Gone;
                         imagen.LayoutParameters.Height = (int)((double)Resources.DisplayMetrics.WidthPixels * ratio);
                     }
                 }
             }
             else
             {
-                FindViewById<RelativeLayout>(Resource.Id.loadingPanel).Visibility = ViewStates.Gone;
+                FindViewById<RelativeLayout>(Resource.Id.carInfoLoadingPanel).Visibility = ViewStates.Gone;
             }
-            string reviewee = carOwner.id;
+            reviewee = carOwner.id;
             string user_id = Preferences.Get("user_id", "");
             string login_hash= Preferences.Get("login_hash", "");
             string address = "https://carshareserver.azurewebsites.net/api/getReviews?reviewee_id=" + reviewee + "&login_hash=" + login_hash + "&user_id=" + user_id;
-            Console.WriteLine(address);
             reviewInfo.get_from_cloud(address);
-            //List<revData> reviews = reviewInfo.getReviews().all_reviews;
             int stauts = reviewInfo.getReviews().status;
             if (stauts == -1)
             {
@@ -137,6 +138,14 @@ namespace Boris
                 }
             }
         }
+
+        private void viewFunc(object sender, EventArgs e)
+        {
+            Intent review_try = new Intent(this, typeof(allReviews));
+            review_try.PutExtra("reviewee", reviewee);
+            StartActivity(review_try);
+        }
+
         void requestCar(object sender, EventArgs eventArgs)
         {
            

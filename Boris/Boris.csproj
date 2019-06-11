@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="addCar.cs" />
+    <Compile Include="allReviews.cs" />
+    <Compile Include="carAdapter.cs" />
     <Compile Include="carInfo.cs" />
     <Compile Include="carInfo_result.cs" />
     <Compile Include="getCar.cs" />
@@ -73,6 +75,8 @@
     <Compile Include="mainFragment.cs" />
     <Compile Include="mapActivity.cs" />
     <Compile Include="myCars.cs" />
+    <Compile Include="myCarsInfo.cs" />
+    <Compile Include="myCar_result.cs" />
     <Compile Include="MyFirebaseIIDService.cs" />
     <Compile Include="MyFirebaseMessagingService.cs" />
     <Compile Include="NZ_result.cs" />
@@ -80,6 +84,8 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="review.cs" />
+    <Compile Include="reviewAdapter.cs" />
+    <Compile Include="reviewClass.cs" />
     <Compile Include="reviewResult.cs" />
     <Compile Include="signinActivity.cs" />
     <Compile Include="user.cs" />
@@ -222,11 +228,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\item_list.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\mapLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -306,9 +307,6 @@
       <SubType>Designer</SubType>
     </Content>
     <AndroidResource Include="Resources\layout\openCarLayout.axml" />
-    <AndroidResource Include="Resources\layout\list_item.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\liveLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -316,6 +314,18 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\spinner_item.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\listCarRow.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\myCarInfo.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\allReviews.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\reviewRow.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

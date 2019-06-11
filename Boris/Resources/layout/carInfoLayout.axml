@@ -5,8 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
-        android:id="@+id/loadingPanel"
+      <RelativeLayout
+        android:id="@+id/carInfoLoadingPanel"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:padding="10dp"
@@ -160,12 +160,12 @@
             android:padding="5dp"
                 android:background="@drawable/roundbottom"
             android:layout_column="0"
-            android:rowCount="1"
+            android:rowCount="2"
             android:columnCount="2">
                 <ImageView
                     app:srcCompat="@mipmap/ic_launcher"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:id="@+id/userImg"
                     android:shadowColor="#606060"
                     android:shadowDx="8"
@@ -180,7 +180,7 @@
                     android:layout_height="match_parent"
                     android:layout_row="0"
                     android:layout_column="1"
-                    android:rowCount="2"
+                    android:rowCount="3"
                     android:columnCount="2">
                        <TextView
                             android:text="User Name"
@@ -239,7 +239,24 @@
                             android:textSize="16dp"
                             android:layout_column="1"
                             android:layout_marginRight="0.0dp" />
+                
                  </GridLayout>
+            <Button
+                android:text="View reviews "
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_button_off"
+                android:layout_height="30dp"
+                android:paddingLeft="8dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="wrap_content"
+                android:id="@+id/carInfoViewReviews"
+                android:layout_row="1"
+                android:textSize="16dp"
+                android:layout_column="1"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_marginRight="0.0dp"
+                android:layout_marginLeft="90.5dp" />
         </GridLayout>
         
             <Button
@@ -255,6 +272,7 @@
                 android:layout_marginTop="10dp"
                 android:shadowColor="#606060"
                 android:shadowDx="5"
+            android:layout_marginRight="20dp"
                 android:shadowDy="5"
                 android:shadowRadius="3"
                 android:layout_row="3"

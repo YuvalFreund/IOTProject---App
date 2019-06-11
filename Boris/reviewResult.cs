@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 struct all_res 
 {
     public int status;
-    public List<revData> all_reviews;
+    public List<revData> reviews;
     public double avg_rate;
 }
 namespace Boris
@@ -31,6 +31,10 @@ namespace Boris
         public all_res getReviews()
         {
             return total_res;
+        }
+        public List<revData> GetRevs()
+        {
+            return total_res.reviews;
         }
     }
 }

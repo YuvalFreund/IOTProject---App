@@ -138,6 +138,7 @@ namespace Boris
             {
                 user user = new user();
                 user.get_from_cloud(user_id, login_hash);
+                
                 GetImageBitmapFromUrl("https://carshareserver.azurewebsites.net/api/getUserImage?user_id=" + user.id);
                 void DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
                 {
@@ -154,6 +155,7 @@ namespace Boris
                     }
 
                 }
+                
 
                 //fab 
 
@@ -169,7 +171,7 @@ namespace Boris
 
                 NavigationView navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
                 navigationView.SetNavigationItemSelectedListener(this);
-
+                
                 async void GetImageBitmapFromUrl(string url)
                 {
                     Bitmap img1 = null;
@@ -293,11 +295,12 @@ namespace Boris
             int id = item.ItemId;
             if (id == Resource.Id.nav_my_cars)
             {
-                //showFragment(mMyCarsFragment);
+                showFragment(mMyCarsFragment);
+                /*
                 Intent live_try = new Intent(this, typeof(liveActivity));
                 live_try.PutExtra("ID", "7029774");
                 live_try.PutExtra("renter_id", "2");
-                StartActivity(live_try);
+                StartActivity(live_try);*/
             }
             if (id == Resource.Id.nav_home)
             {

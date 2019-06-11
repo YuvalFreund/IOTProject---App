@@ -13,7 +13,7 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
-struct carTotalInfo
+public struct carTotalInfo
 {
     public string lat;
     public string lng;
@@ -31,7 +31,7 @@ namespace Boris
     class carInfo_result
     {
         public carTotalInfo info;
-        private static HttpClient client = new HttpClient();
+        public static HttpClient client = new HttpClient();
         public void get_from_cloud(String address)
         {
             var responseString = client.GetStringAsync(address);

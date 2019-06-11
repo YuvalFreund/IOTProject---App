@@ -88,7 +88,7 @@ namespace Boris
             }
             else
             {
-                FindViewById<RelativeLayout>(Resource.Id.loadingPanel).Visibility = ViewStates.Gone;
+                FindViewById<RelativeLayout>(Resource.Id.handelReqLoadingPanel).Visibility = ViewStates.Gone;
             }
 
         }
