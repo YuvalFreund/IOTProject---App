@@ -9,11 +9,14 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using System.Net.Http;
+using Xamarin.Essentials;
 
 namespace Boris
 {
     public class ButtonAdapter : BaseAdapter<string>
     {
+        string carid;
         public Fragment activity;
         public List<string> data;
 
@@ -49,12 +52,37 @@ namespace Boris
 
             TextView lisence = view.FindViewById<TextView>(Resource.Id.myCarsCarNumber);
             lisence.Text = this.data[position];
-
+            carid = data[position];
             Button details = view.FindViewById<Button>(Resource.Id.myCarsDetails);
             details.Tag = lisence.Text ;
             details.SetOnClickListener(new ButtonClickListener(this.activity));
+            Switch toggle = view.FindViewById<Switch>(Resource.Id.myCarsSwitch);
+            toggle.CheckedChange += Toggle_CheckedChange;
 
             return view;
+        }
+
+        private void Toggle_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        {
+            string login_hash = Preferences.Get("login_hash", "");
+            string user_id = Preferences.Get("user_id", "");
+            Console.WriteLine("pppppppppppppp");
+            if (e.IsChecked)
+            {
+                String address = "https://carshareserver.azurewebsites.net/api/setVehicleStatus?user_id=" + user_id + "&vehicle_id=" + carid + "&status="+ "ACTIVATED" + "&login_hash=" + login_hash;
+                HttpClient client = new HttpClient();
+                var responseString = client.GetStringAsync(address);
+                Console.WriteLine(address);
+                Console.WriteLine(responseString);
+            }
+            else
+            {
+                String address = "https://carshareserver.azurewebsites.net/api/setVehicleStatus?user_id=" + user_id + "&vehicle_id=" + carid + "&status=" + "DEACTIVATED" + "&login_hash=" + login_hash;
+                HttpClient client = new HttpClient();
+                var responseString = client.GetStringAsync(address);
+                Console.WriteLine(address);
+                Console.WriteLine(responseString);
+            }
         }
 
         private class ButtonClickListener : Java.Lang.Object, View.IOnClickListener

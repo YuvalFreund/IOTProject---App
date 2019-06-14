@@ -189,6 +189,15 @@ namespace Boris
                                     StartActivity(live_try);
                                     Finish();
                                 }
+                                else
+                                {
+                                    Context context = Application.Context;
+                                    string text = "Something went wrong.";
+                                    ToastLength duration = ToastLength.Long;
+                                    var toast = Toast.MakeText(context, text, duration);
+                                    toast.Show();
+                                    Finish();
+                                }
                             });
                         }
                     }

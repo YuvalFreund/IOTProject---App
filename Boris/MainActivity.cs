@@ -295,9 +295,9 @@ namespace Boris
             int id = item.ItemId;
             if (id == Resource.Id.nav_my_cars)
             {
-                showFragment(mMyCarsFragment);
-                /*
-                Intent live_try = new Intent(this, typeof(liveActivity));
+               showFragment(mMyCarsFragment);
+                
+             /* Intent live_try = new Intent(this, typeof(liveActivity));
                 live_try.PutExtra("ID", "7029774");
                 live_try.PutExtra("renter_id", "2");
                 StartActivity(live_try);*/

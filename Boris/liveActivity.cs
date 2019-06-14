@@ -70,7 +70,7 @@ namespace Boris
         protected override void OnResume()
         {
             base.OnResume();
-            locationManager.RequestLocationUpdates(locationProvider, 0, 0, this);
+            //locationManager.RequestLocationUpdates(locationProvider, 0, 0, this);
         }
         protected override void OnPause()
         {
@@ -85,6 +85,8 @@ namespace Boris
         private void finishAction(object sender, EventArgs e)
         {
             Intent review_try= new Intent(this, typeof(review));
+            review_try.PutExtra("cost", totalCost.Text);
+
             StartActivity(review_try);
             Finish();
         }

@@ -26,6 +26,7 @@ public class user
     public void get_from_cloud(string id, string login_hash)
     {
         var responseString = client.GetStringAsync("https://carshareserver.azurewebsites.net/api/getUserDetails?user_id=" + id.ToString() + "&login_hash=" + login_hash);
+        Console.WriteLine("https://carshareserver.azurewebsites.net/api/getUserDetails?user_id=" + id.ToString() + "&login_hash=" + login_hash);
         user response = JsonConvert.DeserializeObject<user>(responseString.Result);
         this.id = response.id;
 

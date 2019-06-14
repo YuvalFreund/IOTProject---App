@@ -4,15 +4,26 @@
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
-	<TextView
+    <TextView
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/roundedRec"      
-        android:text="How was your ride?"
+        android:background="@drawable/roundtop"      
+        android:text="Total cost: "
         android:layout_height="70dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_marginTop="50dp"
+        android:id="@+id/reviewTotalCost"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+	<TextView
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/roundbottom"      
+        android:text="How was your ride?"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:id="@+id/openCarLicense"
         android:textSize="30dp"
         android:textStyle="bold" />

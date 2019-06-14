@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
     <GridLayout
             android:id="@+id/gridLayout1"
+            android:background="@drawable/roundedrec"      
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"

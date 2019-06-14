@@ -28,7 +28,10 @@ namespace Boris
             stars = FindViewById<RatingBar>(Resource.Id.ratingBar);
             content = FindViewById<TextView>(Resource.Id.cont);
             submit.Click += submitAction;
-            
+            TextView price = FindViewById<TextView>(Resource.Id.reviewTotalCost);
+            price.Text = "Total price: " + Intent.GetStringExtra("cost") + "₪";
+
+
         }
 
         private void submitAction(object sender, EventArgs e)
