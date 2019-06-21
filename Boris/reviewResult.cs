@@ -23,7 +23,7 @@ namespace Boris
     {
         all_res total_res;
         private static HttpClient client = new HttpClient();
-        public void get_from_cloud(String address)
+        public void get_from_cloud(string address)
         {
             var responseString = client.GetStringAsync(address);
             total_res = JsonConvert.DeserializeObject<all_res>(responseString.Result);

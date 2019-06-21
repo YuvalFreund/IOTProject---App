@@ -35,7 +35,7 @@ namespace Boris
 
             root = inflater.Inflate(Resource.Layout.content_main, container, false);
             TextView pending = root.FindViewById<TextView>(Resource.Id.pendingText);
-            TextView waitingApproval = root.FindViewById<TextView>(Resource.Id.approvalText);
+            TextView waitingApproval = root.FindViewById<TextView>(Resource.Id.seconderyText);
             bool isPending = Preferences.Get("isPending", false);
             Log.Debug(TAG, "is pending create- " + isPending + ".");
             // get my cars

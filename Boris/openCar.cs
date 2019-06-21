@@ -16,7 +16,7 @@ using Android.Bluetooth;
 using Java.Util;
 using System.IO;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 
 namespace Boris
 {
@@ -101,9 +101,9 @@ namespace Boris
             }
 
 
-            //bool started = mBluetoothAdapter.StartDiscovery();
-           // System.Console.WriteLine("is scan startd: " + started);
-            Connect();
+            bool started = mBluetoothAdapter.StartDiscovery();
+            System.Console.WriteLine("is scan startd: " + started);
+            //Connect();
         }
    
 
@@ -183,9 +183,13 @@ namespace Boris
                                 System.Console.WriteLine(buffer[0]);
                                 System.Console.WriteLine(buffer[1]);
                                 System.Console.WriteLine(buffer[2]);
-                                if (buffer[0] == 49)
+                                if (buffer[0] == 50)
                                 {
                                     Intent live_try = new Intent(this, typeof(liveActivity));
+                                    live_try.PutExtra("carId", carId);
+                                    Preferences.Set("isPending", false);
+                                    Preferences.Set("isHandle", false);
+                                    Preferences.Set("displaySettings", 0);
                                     StartActivity(live_try);
                                     Finish();
                                 }
@@ -196,6 +200,9 @@ namespace Boris
                                     ToastLength duration = ToastLength.Long;
                                     var toast = Toast.MakeText(context, text, duration);
                                     toast.Show();
+                                    Preferences.Set("isPending", false);
+                                    Preferences.Set("isHandle", false);
+                                    Preferences.Set("displaySettings", 0);
                                     Finish();
                                 }
                             });
@@ -235,13 +242,14 @@ namespace Boris
         }
         void tryOpenCar(object sender, EventArgs eventArgs)
         {
-            openCarButton.Enabled = false;
+            string OTK = Preferences.Get("login_hash", "");
+            string id = Preferences.Get("user_id", "");
             Console.WriteLine("button clicked");
-            dataToSend = new Java.Lang.String("1");
+            dataToSend = new Java.Lang.String("0"+id+OTK);
             writeData(dataToSend);
             beginListenForData();
         }
-        private void CheckBt()
+        private void CheckBt() 
         {
             mBluetoothAdapter = BluetoothAdapter.DefaultAdapter;
             if (!mBluetoothAdapter.Enable())

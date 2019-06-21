@@ -27,7 +27,7 @@ using Xamarin.Android;
 using Xamarin.Essentials;
 namespace Boris
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", Icon ="@drawable/app_icon", MainLauncher = true)]
     public class MainActivity : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         internal static readonly string CHANNEL_ID = "my_notification_channel";
@@ -83,6 +83,11 @@ namespace Boris
                         action = Intent.Extras.GetString(key);
                         is_action = true;
                     }
+                    if (key == "OTK")
+                    {
+                        string OTK = Intent.Extras.GetString(key);
+                        Preferences.Set("OTK", OTK);
+                    }
                 }
                 if (is_action)
                 {
@@ -93,7 +98,6 @@ namespace Boris
                             Preferences.Set("displaySetting", 1);
                             Preferences.Set("carId", carID);
                             string rent_car = Preferences.Get("carId", "");
-                            Console.WriteLine("after set:" + rent_car);
                             Preferences.Set("renter_id", renter_id);
                             break;
                         case 2: //declined
@@ -147,13 +151,15 @@ namespace Boris
                     if (img1 != null)
                     {
                         ImageView imagen = FindViewById<ImageView>(Resource.Id.imageView1);
-                        imagen.SetImageBitmap(img1);
-                        TextView username = FindViewById<TextView>(Resource.Id.userName1);
-                        TextView email = FindViewById<TextView>(Resource.Id.email1);
-                        username.Text = user.first_name + " " + user.last_name;
-                        email.Text = user.email;
+                        if (imagen != null)
+                        {
+                            imagen.SetImageBitmap(img1);
+                            TextView username = FindViewById<TextView>(Resource.Id.userName1);
+                            TextView email = FindViewById<TextView>(Resource.Id.email1);
+                            username.Text = user.first_name + " " + user.last_name;
+                            email.Text = user.email;
+                        }
                     }
-
                 }
                 
 
@@ -189,7 +195,7 @@ namespace Boris
         private void HandlePermitRequest(string carId)
         {
             TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
-            TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
+            TextView waitingApproval = FindViewById<TextView>(Resource.Id.seconderyText);
             Button details = FindViewById<Button>(Resource.Id.detailsButton);
             details.Click += handleClickAction;
             pending.Visibility = ViewStates.Invisible;
@@ -197,18 +203,19 @@ namespace Boris
             details.Visibility = ViewStates.Visible;
             waitingApproval.Text = "Someone wants your car!";
             waitingApproval.Visibility = ViewStates.Visible;
+
         }
 
         private void handleClickAction(object sender, EventArgs e)
         {
             string renter_id = Preferences.Get("renter_id", "");
             string rent_car = Preferences.Get("carId", "");
-
             Button details = FindViewById<Button>(Resource.Id.detailsButton);
             details.Click -= handleClickAction;
             Intent handleTry = new Intent(this, typeof(handleReqActivity));
             handleTry.PutExtra("ID", rent_car);
             handleTry.PutExtra("renter_id", renter_id);
+            Preferences.Set("displaySetting", 0);
             StartActivity(handleTry);
         }
         private void handleOpenkAction(object sender, EventArgs e)
@@ -222,7 +229,7 @@ namespace Boris
         private void HandlePermitApproved(string carId)
         {
             TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
-            TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
+            TextView waitingApproval = FindViewById<TextView>(Resource.Id.seconderyText);
             Button details = FindViewById<Button>(Resource.Id.detailsButton);
             pending.Visibility = ViewStates.Invisible;
             details.Text = "get the car!";
@@ -230,26 +237,15 @@ namespace Boris
             details.Click += handleOpenkAction;
             waitingApproval.Text = "Your Request was approved";
             waitingApproval.Visibility = ViewStates.Visible;
-            Preferences.Set("isPending", false);
-            Preferences.Set("isHandle", false);
         }
         private void HandlePermitDeclined()
         {
-            TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
-            TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
-            Button details = FindViewById<Button>(Resource.Id.detailsButton);
-            pending.Visibility = ViewStates.Visible;
-            details.Visibility = ViewStates.Invisible;
-            waitingApproval.Visibility = ViewStates.Invisible;
+            Preferences.Set("displaySetting", 0);
             Context context = Application.Context;
             string text = "Your request was declined.";
             ToastLength duration = ToastLength.Long;
             var toast = Toast.MakeText(context, text, duration);
-            details.Visibility = ViewStates.Invisible;
-            Preferences.Set("isPending", false);
-            Preferences.Set("isHandle", false);
             toast.Show();
-
         }
         public override void OnBackPressed()
         {
@@ -295,12 +291,13 @@ namespace Boris
             int id = item.ItemId;
             if (id == Resource.Id.nav_my_cars)
             {
-               showFragment(mMyCarsFragment);
+            //   showFragment(mMyCarsFragment);
                 
-             /* Intent live_try = new Intent(this, typeof(liveActivity));
-                live_try.PutExtra("ID", "7029774");
+              Intent live_try = new Intent(this, typeof(review));
+                live_try.PutExtra("carId", "7029774");
                 live_try.PutExtra("renter_id", "2");
-                StartActivity(live_try);*/
+                live_try.PutExtra("cost", "25.4₪");
+                StartActivity(live_try);
             }
             if (id == Resource.Id.nav_home)
             {
@@ -342,27 +339,15 @@ namespace Boris
             base.OnResume();
             System.Console.WriteLine("resumed main activity");
             TextView pending = FindViewById<TextView>(Resource.Id.pendingText);
-            TextView waitingApproval = FindViewById<TextView>(Resource.Id.approvalText);
-            bool isPending = Preferences.Get("isPending", false);
-            bool isHandle = Preferences.Get("isHandle", false);
+            TextView waitingApproval = FindViewById<TextView>(Resource.Id.seconderyText);
             string vehicle = Preferences.Get("carId", "");
-            string resStatus = Preferences.Get("responseStauts", "0");
             int display = Preferences.Get("displaySetting", 0);
             switch (display)
             {
                 case 0:
-                    if (isPending)
-                    {
-                        details.Visibility = ViewStates.Invisible;
-                        pending.Visibility = ViewStates.Invisible;
-                        waitingApproval.Visibility = ViewStates.Visible;
-                    }
-                    else
-                    {
-                        details.Visibility = ViewStates.Invisible;
-                        pending.Visibility = ViewStates.Visible;
-                        waitingApproval.Visibility = ViewStates.Invisible;
-                    }
+                    details.Visibility = ViewStates.Invisible;
+                    pending.Visibility = ViewStates.Visible;
+                    waitingApproval.Visibility = ViewStates.Invisible;
                     break;
                 case 1:
                     HandlePermitRequest(vehicle);
@@ -372,6 +357,12 @@ namespace Boris
                     break;
                 case 3:
                     HandlePermitApproved(vehicle);
+                    break;
+                case 4:
+                    details.Visibility = ViewStates.Invisible;
+                    pending.Visibility = ViewStates.Invisible;
+                    waitingApproval.Text = "Waiting owner's Approval";
+                    waitingApproval.Visibility = ViewStates.Visible;
                     break;
             }
         }

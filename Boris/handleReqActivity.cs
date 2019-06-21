@@ -35,7 +35,8 @@ namespace Boris
             SetContentView(Resource.Layout.handleReqLayout);
             carId = Intent.GetStringExtra("ID");
             renter_id = Intent.GetStringExtra("renter_id");
-
+         
+            
             user user = new user();
             string login_hash = Preferences.Get("login_hash", "1");
             user.get_from_cloud(renter_id, login_hash);
@@ -90,7 +91,6 @@ namespace Boris
             {
                 FindViewById<RelativeLayout>(Resource.Id.handelReqLoadingPanel).Visibility = ViewStates.Gone;
             }
-
         }
 
         void approveAction(object sender, EventArgs eventArgs)
@@ -108,8 +108,6 @@ namespace Boris
             ToastLength duration = ToastLength.Long;
             var toast = Toast.MakeText(context, text, duration);
             toast.Show();
-            Preferences.Set("isPending", false);
-            Preferences.Set("isHandle", false);
             Preferences.Set("displaySettings", 0);
             Finish();
         }
@@ -125,12 +123,9 @@ namespace Boris
             string text = "You declined the request.";
             ToastLength duration = ToastLength.Long;
             var toast = Toast.MakeText(context, text, duration);
-            Preferences.Set("isPending", false);
-            Preferences.Set("isHandle", false);
             Preferences.Set("displaySettings", 0);
             toast.Show();
             Finish();
-
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Boris
             LatLng Israel = new LatLng(31.916312,34.84811);
             CameraPosition.Builder builder = CameraPosition.InvokeBuilder();
             builder.Target(Israel);
-            builder.Zoom(10);
+            builder.Zoom(8);
             CameraPosition cameraPosition = builder.Build();
             CameraUpdate cameraUpdate = CameraUpdateFactory.NewCameraPosition(cameraPosition);
             map.MoveCamera(cameraUpdate);

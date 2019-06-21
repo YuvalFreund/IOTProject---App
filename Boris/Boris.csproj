@@ -68,6 +68,8 @@
     <Compile Include="getCar.cs" />
     <Compile Include="handleReqActivity.cs" />
     <Compile Include="History.cs" />
+    <Compile Include="historyAdapter.cs" />
+    <Compile Include="historyResult.cs" />
     <Compile Include="liveActivity.cs" />
     <Compile Include="login_result.cs" />
     <Compile Include="MainActivity.cs" />
@@ -85,7 +87,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="review.cs" />
     <Compile Include="reviewAdapter.cs" />
-    <Compile Include="reviewClass.cs" />
     <Compile Include="reviewResult.cs" />
     <Compile Include="signinActivity.cs" />
     <Compile Include="user.cs" />
@@ -278,6 +279,7 @@
     <Content Include="Resources\drawable-v21\rounded_shape.xml">
       <SubType>Designer</SubType>
     </Content>
+    <AndroidResource Include="Resources\drawable\app_icon.png" />
     <Content Include="Resources\drawable\ripple.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -326,6 +328,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\reviewRow.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\historyRow.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

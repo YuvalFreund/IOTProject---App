@@ -73,15 +73,12 @@ namespace Boris
             string mmanufacturer = make;
             string mcolor = color.Text;
             RadioButton radioButton = FindViewById<RadioButton>(mode.CheckedRadioButtonId);
-            if(radioButton.Id == Resource.Id.radioManual)
-            {
-                mmode = "0";
-            }
+       
             string myear = year.Text;
             string mlisence = lisence.Text;
             string login_hash = Preferences.Get("login_hash", "");
             string user_id = Preferences.Get("user_id", "");
-            String address = "https://carshareserver.azurewebsites.net/api/addCar?manufacturer=" + mmanufacturer + "&Mode=" + mmode + "&Lisence=" + mlisence + "&color=" + mcolor + "&model=" + mmodel + "&year=" + myear + "&login_hash=" + login_hash + "&user_id=" + user_id;
+            String address = "https://carshareserver.azurewebsites.net/api/addCar?manufacturer=" + mmanufacturer + "&Mode=" + "1" + "&Lisence=" + mlisence + "&color=" + mcolor + "&model=" + mmodel + "&year=" + myear + "&login_hash=" + login_hash + "&user_id=" + user_id;
             Console.WriteLine(address);
             HttpClient client = new HttpClient();
             var responseString = client.GetStringAsync(address);

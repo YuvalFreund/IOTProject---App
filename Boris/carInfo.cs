@@ -153,7 +153,8 @@ namespace Boris
             String user_id = Preferences.Get("user_id", "0");
 
             Preferences.Set("requestedCar", carId);
-            Preferences.Set("isPending", true);
+            Preferences.Set("displaySetting", 4);
+
 
             String address = "https://carshareserver.azurewebsites.net/api/requestPermit?user_id=" + user_id + "&login_hash=" + login_hash + "&vehicle_id=" + carId;
             HttpClient client = new HttpClient();

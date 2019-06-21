@@ -11,15 +11,22 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_main">
 
+ 
     <TextView
         android:layout_width="wrap_content"
+
         android:id="@+id/pendingText"
+         android:background="@drawable/roundedrec"      
         android:layout_row = "0"
         android:layout_column="0"
-        android:layout_height="200dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:padding="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:text="No pending requests"
-        android:textSize="40dp"/>
+        android:textSize="35dp"/>
        <GridLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,7 +43,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:id="@+id/approvalText"
+            android:id="@+id/seconderyText"
             android:layout_row = "0"
             android:width="200dp"
             android:layout_column="0"
@@ -48,6 +55,9 @@
         <Button
             android:layout_width="wrap_content"
             android:id="@+id/detailsButton"
+            android:background="@drawable/rounded_button_off"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:layout_row = "0"
             android:layout_column="1"
             android:visibility= "invisible"

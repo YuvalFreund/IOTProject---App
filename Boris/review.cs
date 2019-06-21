@@ -19,6 +19,7 @@ namespace Boris
     {
         Button submit;
         RatingBar stars;
+        string carId;
         TextView content;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,9 +30,8 @@ namespace Boris
             content = FindViewById<TextView>(Resource.Id.cont);
             submit.Click += submitAction;
             TextView price = FindViewById<TextView>(Resource.Id.reviewTotalCost);
-            price.Text = "Total price: " + Intent.GetStringExtra("cost") + "₪";
-
-
+            price.Text = "Total price: " + Intent.GetStringExtra("cost");
+            carId = Intent.GetStringExtra("carId");
         }
 
         private void submitAction(object sender, EventArgs e)
@@ -41,7 +41,13 @@ namespace Boris
             string reviewee= Preferences.Get("reviewee", "5");
             string rating = stars.Rating.ToString();
             string cont = content.Text;
-            String address = "https://carshareserver.azurewebsites.net/api/addReview?reviewer_id=" + reviewer + "&reviewee_id=" + reviewee + "&rate=" + rating + "&cont=" + cont + "&login_hash=" + login_hash;
+            string Cost = Intent.GetStringExtra("cost");
+            Cost = Cost.Substring(0, Cost.Length - 1);
+            string Car = carId;
+            string Date = DateTime.Now.ToString("dd/MM/yyyy");
+            Console.WriteLine(Date);
+            Preferences.Set("displaySetting", 0);
+            string address = "https://carshareserver.azurewebsites.net/api/addReview?reviewer_id=" + reviewer + "&reviewee_id=" + reviewee + "&rate=" + rating + "&cont=" + cont + "&login_hash=" + login_hash + "&cost=" + Cost + "&car_id=" +Car+ "&date=" + Date;
             Console.WriteLine(address);
             HttpClient client = new HttpClient();
             var responseString = client.GetStringAsync(address);
